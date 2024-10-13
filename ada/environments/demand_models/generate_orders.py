@@ -5,7 +5,7 @@
 import numpy as np 
 
 from .seasonal_demand import *
-from .historic_demand import *
+# from .historic_demand import *
 from .forecast import *
 from .test_demand import *
 
@@ -16,8 +16,8 @@ def generate_orders(env):
 		return generate_seasonal_orders(env)
 	elif demand_model == 'EXCEL_DEMAND':
 		return load_excel_demand_file(env)		
-	elif demand_model == 'HISTORY_MODEL':
-		return generate_history_model_orders(env)	
+	# elif demand_model == 'HISTORY_MODEL':
+		#return generate_history_model_orders(env)	
 	elif demand_model == 'TEST':
 		return generate_test_orders(env)
 	else:
@@ -47,8 +47,8 @@ def check_demand_settings(settings):
 	demand_model = settings['DEMAND_MODEL']
 	if demand_model == 'SEASONAL_DEMAND':
 		settings = get_default_seasonal_demand_settings(settings)
-	elif demand_model == 'UNIFORM_DEMAND':
-		settings = get_default_uniform_demand_settings(settings)
+	#elif demand_model == 'UNIFORM_DEMAND':
+		#settings = get_default_uniform_demand_settings(settings)
 	elif demand_model == 'EXCEL_DEMAND':
 		if settings['EXCEL_DEMAND_FILE'] is None:
 			raise ValueError('No demand file provided in settings when DEMAND_MODEL is set to EXCEL_DEMAND')	
