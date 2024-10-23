@@ -24,7 +24,8 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
-    'AGENT_CLASS': 'RL',
+   # 'AGENT_CLASS': 'RL',
+    'AGENT_CLASS': 'MIP',
     'ENVIRONMENT': 'TARTAN',
     'N_PRODUCTS': 6,
     'START_TIME': '2018-01-01',
@@ -32,6 +33,10 @@ config = {
     'REWARD_FUNCTION': 'OTD1'
     # And so on...
 }
+
+
+
+
 
 def parse_cl_args(argv):
     config_args = ['default', '<path>']
