@@ -8,6 +8,8 @@ python train.py --config default
 
 python train.py --config="myfile.txt"
 
+---
+
 # Modifications from originial repo
 - Change the structure:
 ```
