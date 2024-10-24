@@ -23,5 +23,5 @@ python train.py --config="myfile.txt"
   
   ```
 
-- In `train.py` change `` to `` to be able to run with config dictionary.
-- Comment out `import `
+- In `train.py` change `agent = set_up_sim(args)` to `agent = set_up_sim(args, config_dict = config)` to be able to run with config dictionary.
+- Comment out `from .maintenance_models import * `
