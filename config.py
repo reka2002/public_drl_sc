@@ -32,7 +32,8 @@ config = {
     'END_TIME': '2018-01-15',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
-    'TIME_LIMIT': 120
+    'TIME_LIMIT': 120,
+    'MIP_ALGO': 'GOD'
 
     
 
