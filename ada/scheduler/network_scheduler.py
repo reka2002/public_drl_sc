@@ -11,6 +11,7 @@ import numpy as np
 from copy import copy
 from ada.agents.rl_algos.rl_utils import torchToNumpy
 from ada.environments.env_utils import get_current_state
+from ada.scheduler.heuristic_scheduler import *
 
 def build_network_schedule(env, network, schedule=None):
     try:

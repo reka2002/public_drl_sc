@@ -250,8 +250,8 @@ class deepQNet(nn.Module):
         return self.net(state_t)
 
     def calc_loss(self, batch, gamma):
-    	states, actions, rewards, dones, next_states = batch
-    	states_t = torch.FloatTensor(states).to(self.device)
+        states, actions, rewards, dones, next_states = batch
+        states_t = torch.FloatTensor(states).to(self.device)
     	next_states_t = torch.FloatTensor(next_states).to(self.device)
     	actions_t = torch.LongTensor(actions).to(self.device)
     	rewards_t = torch.FloatTensor(rewards).to(self.device)
