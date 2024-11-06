@@ -201,75 +201,75 @@ class valueEstimator(nn.Module):
         os.makedirs(path, exist_ok=True)
         torch.save(self.net.state_dict(), path + '/critic.pt')
 
-class deepQNet(nn.Module):
-    def __init__(self, env, n_hidden_layers=0, n_hidden_nodes=4,
-    			 learning_rate=0.01, grad_clip=False, bias=False,
-                 device='cpu'):
-        super(deepQNet, self).__init__()
+# class deepQNet(nn.Module):
+#     def __init__(self, env, n_hidden_layers=0, n_hidden_nodes=4,
+#     			 learning_rate=0.01, grad_clip=False, bias=False,
+#                  device='cpu'):
+#         super(deepQNet, self).__init__()
         
-        self.device = check_device_settings(settings)
-        self.n_inputs = env.observation_space.shape[0]
-        self.n_outputs = env.action_space.n
-        self.n_hidden_nodes = n_hidden_nodes
-        # Add extra layer to account for activation function
-        self.n_hidden_layers = 2 * n_hidden_layers
-        self.layers = OrderedDict()
-        for i in range(self.n_hidden_layers + 1):
-            # Define input layer
-            if self.n_hidden_layers == 0:
-                self.layers[str(i)] = nn.Linear(
-                    self.n_inputs,
-                    self.n_outputs,
-                    bias=self.bias)
-            elif i % 2 == 0 and i == 0 and self.n_hidden_layers != 0:
-                self.layers[str(i)] = nn.Linear(
-                    self.n_inputs,
-                    self.n_hidden_nodes,
-                    bias=self.bias)
-            elif i % 2 == 0 and i < self.n_hidden_layers:
-                self.layers[str(i)] = nn.Linear(
-                    self.n_hidden_nodes,
-                    self.n_hidden_nodes,
-                    bias=self.bias)
-            elif i % 2 == 0 and i == self.n_hidden_layers:
-                self.layers[str(i)] = nn.Linear(
-                    self.n_hidden_nodes,
-                    self.n_outputs,
-                    bias=self.bias)
-            else:
-                self.layers[str(i)] = nn.ReLU()
+#         self.device = check_device_settings(settings)
+#         self.n_inputs = env.observation_space.shape[0]
+#         self.n_outputs = env.action_space.n
+#         self.n_hidden_nodes = n_hidden_nodes
+#         # Add extra layer to account for activation function
+#         self.n_hidden_layers = 2 * n_hidden_layers
+#         self.layers = OrderedDict()
+#         for i in range(self.n_hidden_layers + 1):
+#             # Define input layer
+#             if self.n_hidden_layers == 0:
+#                 self.layers[str(i)] = nn.Linear(
+#                     self.n_inputs,
+#                     self.n_outputs,
+#                     bias=self.bias)
+#             elif i % 2 == 0 and i == 0 and self.n_hidden_layers != 0:
+#                 self.layers[str(i)] = nn.Linear(
+#                     self.n_inputs,
+#                     self.n_hidden_nodes,
+#                     bias=self.bias)
+#             elif i % 2 == 0 and i < self.n_hidden_layers:
+#                 self.layers[str(i)] = nn.Linear(
+#                     self.n_hidden_nodes,
+#                     self.n_hidden_nodes,
+#                     bias=self.bias)
+#             elif i % 2 == 0 and i == self.n_hidden_layers:
+#                 self.layers[str(i)] = nn.Linear(
+#                     self.n_hidden_nodes,
+#                     self.n_outputs,
+#                     bias=self.bias)
+#             else:
+#                 self.layers[str(i)] = nn.ReLU()
                 
-            self.net = nn.Sequential(self.layers)
-            self.target_net = copy.deepcopy(self.net)
+#             self.net = nn.Sequential(self.layers)
+#             self.target_net = copy.deepcopy(self.net)
 
-            self.optimizer = torch.optim.Adam(self.net.parameters(),
-            	lr=self.learning_rate)
+#             self.optimizer = torch.optim.Adam(self.net.parameters(),
+#             	lr=self.learning_rate)
             
-    def predict(self, state):
-        state_t = torch.FloatTensor(state).to(self.device)
-        return self.net(state_t)
+#     def predict(self, state):
+#         state_t = torch.FloatTensor(state).to(self.device)
+#         return self.net(state_t)
 
-    def calc_loss(self, batch, gamma):
-        states, actions, rewards, dones, next_states = batch
-        states_t = torch.FloatTensor(states).to(self.device)
-    	next_states_t = torch.FloatTensor(next_states).to(self.device)
-    	actions_t = torch.LongTensor(actions).to(self.device)
-    	rewards_t = torch.FloatTensor(rewards).to(self.device)
-    	done_mask = torch.ByteTensor(dones).to(self.device)
+#     def calc_loss(self, batch, gamma):
+#         states, actions, rewards, dones, next_states = batch
+#         states_t = torch.FloatTensor(states).to(self.device)
+#     	next_states_t = torch.FloatTensor(next_states).to(self.device)
+#     	actions_t = torch.LongTensor(actions).to(self.device)
+#     	rewards_t = torch.FloatTensor(rewards).to(self.device)
+#     	done_mask = torch.ByteTensor(dones).to(self.device)
 
-    	state_action_vals = self.net.predict(states_t).gather(
-    		1, actions_t.unsqueeze(-1)).squeeze(-1)
-    	next_state_vals = self.target_net.predict(next_states_t).max(1)[0]
+#     	state_action_vals = self.net.predict(states_t).gather(
+#     		1, actions_t.unsqueeze(-1)).squeeze(-1)
+#     	next_state_vals = self.target_net.predict(next_states_t).max(1)[0]
 
-    	next_state_vals[done_mask] = 0
-    	next_state_vals = next_state_vals.detach()
-    	expected_values = next_state_vals * gamma + rewards_t
-    	loss = nn.MSELoss()(state_action_vals, expected_values)
-    	return loss
+#     	next_state_vals[done_mask] = 0
+#     	next_state_vals = next_state_vals.detach()
+#     	expected_values = next_state_vals * gamma + rewards_t
+#     	loss = nn.MSELoss()(state_action_vals, expected_values)
+#     	return loss
 
-    def update(self, batch, gamma):
-    	self.optimizer.zero_grad()
-    	loss = self.calc_loss(batch, gamma)
-    	loss.backward()
-    	self.optimzer.step()
-    	return loss
+#     def update(self, batch, gamma):
+#     	self.optimizer.zero_grad()
+#     	loss = self.calc_loss(batch, gamma)
+#     	loss.backward()
+#     	self.optimzer.step()
+#     	return loss

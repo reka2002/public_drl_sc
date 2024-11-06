@@ -24,7 +24,7 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
-    #'AGENT_CLASS': 'RL',
+    'AGENT_CLASS': 'RL',
     #'AGENT_CLASS': 'MIP',
     'ENVIRONMENT': 'TARTAN',
     'N_PRODUCTS': 6,
@@ -34,6 +34,8 @@ config = {
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
+    'CONFIDENCE_LEVEL': 0.9,
+    'HEURISTIC_ALGO' : 'RANDOM'
    # 'MIP_ALGO': 'GOD'
 
     

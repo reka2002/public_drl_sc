@@ -121,6 +121,7 @@ class a2c():
                     
                 self.schedule, planning_data = network_scheduler(self.env,
                     self.policy_est, self.schedule)
+                
    
                 if planning_data is not None:
                     _planning_data.append(planning_data)

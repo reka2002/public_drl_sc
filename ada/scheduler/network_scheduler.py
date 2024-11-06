@@ -101,6 +101,7 @@ def predict_state(env, schedule=None):
     return state
 
 # Generate schedule from policy network
+
 def network_scheduler(env, network, schedule, confidence_level=None, test=False):
     '''
     Inputs
@@ -112,6 +113,7 @@ def network_scheduler(env, network, schedule, confidence_level=None, test=False)
         from the policy network is below the confidence_level, then the 
         schedule defaults to the heuristic.
     '''
+    confidence_level = env.settings['CONFIDENCE_LEVEL']
     a_probs = []
     heuristic_selection = []
     predicted_state = []
@@ -152,7 +154,8 @@ def network_scheduler(env, network, schedule, confidence_level=None, test=False)
 
         # Run heuristic
         if confidence_level is not None and action_probs.max() < confidence_level:
-           action = heuristic_scheduler(env)
+           # action = heuristic_scheduler(env)
+           action = heuristic_scheduler(env, schedule)
            heuristic_selection.append([planning_day, 1])
         elif test == True:
             action = env.action_list[np.argmax(action_probs)]
@@ -190,7 +193,7 @@ def network_scheduler(env, network, schedule, confidence_level=None, test=False)
         heuristic_selection = np.vstack(heuristic_selection)
         a_probs = np.vstack(a_probs)
         planning_data = np.hstack([heuristic_selection, a_probs])
-
+    #print(planning_data)
     return schedule, planning_data
 
 # Get schedule value estimation
