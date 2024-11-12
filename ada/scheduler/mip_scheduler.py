@@ -52,6 +52,7 @@ class schedulingMPC():
                     self.schedule, self.m_solved, self.results = build_milp_schedule(
                         self.env, m, schedule=self.schedule, settings=self.settings)
                 print("\nSolution from Day: {:d}".format(self.env.sim_time))
+                print(self.schedule)
                 self.time_stamps.append(self.env.sim_time)
                 self.schedule = self.env.step(self.schedule)
                 # if 'SMPC' not in self.env.settings['MIP_ALGO']:
