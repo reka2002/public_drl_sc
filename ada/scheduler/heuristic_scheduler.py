@@ -15,8 +15,8 @@ def build_heuristic_schedule(facility, schedule=None):
 
 def heuristic_scheduler(facility, schedule, *args, **kwargs):
     # Get current state
-    # s = facility.get_current_state()[-facility.n_products:]
-    s = get_current_state(facility, schedule=schedule, day=int(copy(facility.sim_time)))[-facility.n_products:]
+    s = facility.get_current_state()[-facility.n_products:]
+    #s = get_current_state(facility, schedule=schedule, day=int(copy(facility.sim_time)))[-facility.n_products:]
     # Get minimum inventory entries
     mins = np.where(s==np.min(s))[0]
     # If multiple minimum values, sample from available actions
@@ -24,7 +24,7 @@ def heuristic_scheduler(facility, schedule, *args, **kwargs):
         # Add one to match action
         action = np.random.choice(np.array(facility.action_list)[mins])
     else:
-        # action = np.array(facility.action_list)[np.argmin(facility.get_current_state())]
-        action = np.array(facility.action_list)[np.argmin(get_current_state(facility, schedule=schedule, day=int(copy(facility.sim_time))))]
+        action = np.array(facility.action_list)[np.argmin(facility.get_current_state())]
+        #action = np.array(facility.action_list)[np.argmin(get_current_state(facility, schedule=schedule, day=int(copy(facility.sim_time))))]
         
     return int(action)

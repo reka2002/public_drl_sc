@@ -115,24 +115,24 @@ def plot_net_forecast(env, gmid, month):
                  x=env.lookahead_planning_horizon + env.sim_time, 
                  y=max(act_agg)/v_adj, rotation=270, fontsize=12)
 
-    # Forecasted Demand Plot
-    plt.subplot2grid((4, 4), (0, 2), colspan=2, rowspan=2)
-    plt.bar(fcast_agg.index, fcast_agg, color=colors[-1])
-    plt.xlim([min(days) - 1, max(days) + 1])
-    plt.xlabel('Day')
-    plt.title('Forecasted Demand from Day {} for Product {}'.format(
-        env.sim_time, gmid))
-    if env.fixed_planning_horizon + env.sim_time in days:
-        plt.axvline(x=env.fixed_planning_horizon + env.sim_time, 
-                    c='k')
-        plt.text(s='Fixed Schedule Horizon', 
-                 x=env.fixed_planning_horizon + env.sim_time,
-                 y=max(fcast_agg)/v_adj, rotation=270, fontsize=12)
-        plt.axvline(x=env.lookahead_planning_horizon + env.sim_time,
-                    c='k')
-        plt.text(s='Planning Schedule Horizon',
-                 x=env.lookahead_planning_horizon + env.sim_time,
-                 y=max(fcast_agg)/v_adj, rotation=270, fontsize=12)
+    # # Forecasted Demand Plot
+    # plt.subplot2grid((4, 4), (0, 2), colspan=2, rowspan=2)
+    # plt.bar(fcast_agg.index, fcast_agg, color=colors[-1])
+    # plt.xlim([min(days) - 1, max(days) + 1])
+    # plt.xlabel('Day')
+    # plt.title('Forecasted Demand from Day {} for Product {}'.format(
+    #     env.sim_time, gmid))
+    # if env.fixed_planning_horizon + env.sim_time in days:
+    #     plt.axvline(x=env.fixed_planning_horizon + env.sim_time, 
+    #                 c='k')
+    #     plt.text(s='Fixed Schedule Horizon', 
+    #              x=env.fixed_planning_horizon + env.sim_time,
+    #              y=max(fcast_agg)/v_adj, rotation=270, fontsize=12)
+    #     plt.axvline(x=env.lookahead_planning_horizon + env.sim_time,
+    #                 c='k')
+    #     plt.text(s='Planning Schedule Horizon',
+    #              x=env.lookahead_planning_horizon + env.sim_time,
+    #              y=max(fcast_agg)/v_adj, rotation=270, fontsize=12)
 
     # Net forecast
     net_agg = np.zeros(max(days) + 1)

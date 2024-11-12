@@ -241,11 +241,11 @@ def mip_gantt_plot(env, model, time_step=None,
     plt.title('Production Gantt Chart Day {:d}'.format(time_stamp))
     plt.xlabel('Day')
     plt.ylabel('Product')
-    plt.axvline(x=max(model.h), c='k')
-    plt.annotate('Planning Horizon',
-        xy=(max(model.h) - 0.5, gantt_matrix.shape[0] / 2 - 1),
-        rotation=90, 
-        size=20, color='k')
+    #plt.axvline(x=max(model.H), c='k')
+    # plt.annotate('Planning Horizon',
+    #     xy=(max(model.H) - 0.5, gantt_matrix.shape[0] / 2 - 1),
+    #     rotation=90, 
+    #     size=20, color='k')
     if save:
         fig.savefig(path + '/MIP_gantt_day_' + str(time_stamp) + '.png', 
             bbox_inches='tight')
@@ -281,13 +281,13 @@ def mip_inventory_plot(env, model, time_step=None,
     plt.title('Inventory from Day {:d}'.format(time_stamp))
     plt.xlabel('Time Interval (days)')
     plt.ylabel('Inventory Quantity (MT)')
-    plt.axvline(x=max(model.h), color='k')
-    plt.annotate('Planning Horizon',
-        xy=(max(model.h) - 0.5, inventory_matrix.max() / 2 + 0.15 * \
-            inventory_matrix.max()),
-        rotation=90, 
-        size=20,
-        color='k')
+    # plt.axvline(x=max(model.h), color='k')
+    # plt.annotate('Planning Horizon',
+    #     xy=(max(model.h) - 0.5, inventory_matrix.max() / 2 + 0.15 * \
+    #         inventory_matrix.max()),
+    #     rotation=90, 
+    #     size=20,
+    #     color='k')
     if save:
         fig.savefig(path + '/MIP_inventory_day_' + str(time_stamp) + '.png', 
             bbox_inches='tight')
