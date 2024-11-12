@@ -40,7 +40,7 @@ def buildDeterministicMIP2(env, schedule=None, *args, **kwargs):
     m.sim_time = copy.copy(env.sim_time)
 
     # Create order dictionary for easy indexing with Pyomo
-    m.order_book = subset_orderbook(env)
+    m.order_book = subset_orderbook(env, m.K)
     unique_gmid, gmid_locs, gmid_counts = np.unique(
         env.order_book[:, env.ob_indices['gmid']],
         return_inverse=True,
@@ -73,6 +73,9 @@ def buildDeterministicMIP2(env, schedule=None, *args, **kwargs):
     m.run_rates = get_run_rate_dict(env)
 
     m.transition_losses = {(j, i): env.transition_matrix[idx, jdx] 
+        for idx, i in enumerate(m.production_states)
+        for jdx, j in enumerate(m.production_states)}
+    m.transition_costs = {(j, i): env.transition_costs[idx, jdx] 
         for idx, i in enumerate(m.production_states)
         for jdx, j in enumerate(m.production_states)}
     

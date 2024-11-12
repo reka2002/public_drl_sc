@@ -27,4 +27,7 @@ python train.py --config="myfile.txt"
 
 - In `train.py` change `agent = set_up_sim(args)` to `agent = set_up_sim(args, config_dict = config)` to be able to run with config dictionary.
 - Comment out `from .maintenance_models import * `
-- Import `from ada.scheduler.heuristic_scheduler import *` in network scheudler
+- Import `from ada.scheduler.heuristic_scheduler import *` in network scheduler
+- To run SIMP_MPC: Comment out `reduced_schedule = reduced_schedule[0,:]` when running SIMP_MPC
+- To run SMPC: add K to order books
+

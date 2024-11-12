@@ -150,13 +150,13 @@ def build_order_dict(env, order_book):
         
     return order_dict, order_cols
 
-def build_stochastic_order_dict(env, n_scenarios):
+def build_stochastic_order_dict(env, n_scenarios, K):
     order_dict = {}
     order_cols = ['gmid', 'order_qty', 'var_std_margin', 
         'planned_gi_time', 'shipped']
     for s in range(n_scenarios):
         env.get_forecast()
-        order_book = subset_orderbook(env).copy()
+        order_book = subset_orderbook(env, K).copy()
         for col in order_cols:
             col_idx = env.ob_indices[col]
             for n in order_book[:, env.ob_indices['doc_num']]:

@@ -118,7 +118,7 @@ class productionFacility(core):
             self.containers.late_orders_on_books.append(prev_late_order_count)
         
         reduced_schedule = schedule[np.where(schedule[:,self.sched_indices["prod_start_time"]] >= self.sim_time)]
-        reduced_schedule = reduced_schedule[0,:]
+        #reduced_schedule = reduced_schedule[0,:]
 
         self.containers.inventory_cost.append(self.get_inventory_cost())
         

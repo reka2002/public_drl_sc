@@ -43,7 +43,7 @@ def buildStochasticMIP(env, schedule=None, *args, **kwargs):
     m.sim_time = copy.copy(env.sim_time)
 
     # Create order dictionary for easy indexing with Pyomo
-    m.order_book = subset_orderbook(env).copy()
+    m.order_book = subset_orderbook(env, m.K).copy()
     unique_gmid, gmid_locs, gmid_counts = np.unique(
         env.order_book[:, env.ob_indices['gmid']],
         return_inverse=True,
@@ -52,7 +52,7 @@ def buildStochasticMIP(env, schedule=None, *args, **kwargs):
         env.order_book[:,env.ob_indices['var_std_margin']]) / gmid_counts
     m.beta = {gmid: mean_values[idx] for idx, gmid in enumerate(m.gmids)}
     m.order_dict, m.order_cols = build_stochastic_order_dict(env, 
-        n_scenarios=m.n_scenarios)
+        n_scenarios=m.n_scenarios, K=m.K)
     m.order_dict_disc = discount_order_dict(m)
     # Get list of keys to avoid key errors
     m.order_keys = list(m.order_dict_disc.keys())
