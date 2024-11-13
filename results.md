@@ -4,7 +4,9 @@ Q:
 - GOD, switch to product 4, everything off grade?
 - GOD is perfect information but no actual data ??
 - does it not change based on days bc of the seasonal demand ?
-- why batches shorter for simplified
+- why batches shorter for simplified and MPC? is it because no forecast?
+- smoothed demand forecast for RH?
+
 
 # Results for MILPs for 12 day, using generated seasonal data
 

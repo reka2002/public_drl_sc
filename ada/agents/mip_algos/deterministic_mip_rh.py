@@ -40,7 +40,7 @@ def buildDeterministicMIPRH(env, schedule=None, *args, **kwargs):
     m.sim_time = copy.copy(env.sim_time)
 
     # Create order dictionary for easy indexing with Pyomo
-    m.order_book = subset_orderbook(env)
+    m.order_book = subset_orderbook(env, m.K)
     unique_gmid, gmid_locs, gmid_counts = np.unique(
         env.order_book[:, env.ob_indices['gmid']],
         return_inverse=True,

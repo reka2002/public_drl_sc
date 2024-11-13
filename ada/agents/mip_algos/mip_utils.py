@@ -253,47 +253,47 @@ def mip_gantt_plot(env, model, time_step=None,
     else:
         plt.show()
 
-def mip_inventory_plot(env, model, time_step=None,
-    color_scheme=None, save=False, path=None):
-    time_stamp = env.sim_time if time_step is None else time_step
-    inventory_matrix = np.zeros((max(model.j), model.K + 1))
+# def mip_inventory_plot(env, model, time_step=None,
+#     color_scheme=None, save=False, path=None):
+#     time_stamp = env.sim_time if time_step is None else time_step
+#     inventory_matrix = np.zeros((max(model.j), model.K + 1))
 
-    product_names = env.product_data[:, env.prod_data_indices['product_name']]
+#     product_names = env.product_data[:, env.prod_data_indices['product_name']]
 
-    inventory_object = getattr(model, 'inventory')
-    for idx in inventory_object:
-        row = np.where(model.gmids==int(idx[0]))[0]
-        inventory_matrix[row, idx[1]] = inventory_object[idx].value
+#     inventory_object = getattr(model, 'inventory')
+#     for idx in inventory_object:
+#         row = np.where(model.gmids==int(idx[0]))[0]
+#         inventory_matrix[row, idx[1]] = inventory_object[idx].value
 
-    if color_scheme is None:
-        c = plt.rcParams['axes.prop_cycle'].by_key()['color']
-    else:
-        cmap = mpl.cm.get_cmap(color_scheme)
-        c = [cmap(i) for i in range(len(product_names))]
+#     if color_scheme is None:
+#         c = plt.rcParams['axes.prop_cycle'].by_key()['color']
+#     else:
+#         cmap = mpl.cm.get_cmap(color_scheme)
+#         c = [cmap(i) for i in range(len(product_names))]
 
-    # Plot inventory
-    fig = plt.figure(figsize=(12,8))
-    x_axis = np.arange(min(model.k), model.K + 1)
-    for p in range(inventory_matrix.shape[0]):
-        plt.plot(x_axis, inventory_matrix[p, min(model.k):], label=product_names[p])
+#     # Plot inventory
+#     fig = plt.figure(figsize=(12,8))
+#     x_axis = np.arange(min(model.k), model.K + 1)
+#     for p in range(inventory_matrix.shape[0]):
+#         plt.plot(x_axis, inventory_matrix[p, min(model.k):], label=product_names[p])
 
-    plt.legend(loc='best')
-    plt.title('Inventory from Day {:d}'.format(time_stamp))
-    plt.xlabel('Time Interval (days)')
-    plt.ylabel('Inventory Quantity (MT)')
-    # plt.axvline(x=max(model.h), color='k')
-    # plt.annotate('Planning Horizon',
-    #     xy=(max(model.h) - 0.5, inventory_matrix.max() / 2 + 0.15 * \
-    #         inventory_matrix.max()),
-    #     rotation=90, 
-    #     size=20,
-    #     color='k')
-    if save:
-        fig.savefig(path + '/MIP_inventory_day_' + str(time_stamp) + '.png', 
-            bbox_inches='tight')
-        plt.close(fig)
-    else:
-        plt.show()
+#     plt.legend(loc='best')
+#     plt.title('Inventory from Day {:d}'.format(time_stamp))
+#     plt.xlabel('Time Interval (days)')
+#     plt.ylabel('Inventory Quantity (MT)')
+#     # plt.axvline(x=max(model.h), color='k')
+#     # plt.annotate('Planning Horizon',
+#     #     xy=(max(model.h) - 0.5, inventory_matrix.max() / 2 + 0.15 * \
+#     #         inventory_matrix.max()),
+#     #     rotation=90, 
+#     #     size=20,
+#     #     color='k')
+#     if save:
+#         fig.savefig(path + '/MIP_inventory_day_' + str(time_stamp) + '.png', 
+#             bbox_inches='tight')
+#         plt.close(fig)
+#     else:
+#         plt.show()
 
 def mip_sales_plot(env, model, time_step=None,
     color_scheme=None, save=False, path=None):

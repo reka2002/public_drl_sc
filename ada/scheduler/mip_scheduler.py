@@ -45,57 +45,74 @@ class schedulingMPC():
             print("Schedule: ", self.schedule)  
             print("Results: ", self.model_results)
             self.generate_gifs()
-        elif 'MPC' in self.env.settings['MIP_ALGO']:
-            m = self.build_model(self.env, schedule=self.schedule)
-            self.schedule, self.m_solved, self.results = build_milp_schedule(self.env, m,
-                schedule=self.schedule, settings=self.settings)
-            print("\nSolution for simulation horizon found.")
-            for t in range(self.env.n_steps):
-                self.time_stamps.append(self.env.sim_time)
-                self.schedule = self.env.step(self.schedule)
-                self.solved_models.append(self.m_solved)
-                self.model_results.append(self.results)   
-            print("Schedule: ", self.schedule)  
-            print("Results: ", self.model_results)
-            self.generate_gifs()
+######################################################################################################
+# not in original
+        # add RH model
+        # if 'MPCRH' in self.env.settings['MIP_ALGO']:
+        #     m = self.build_model(self.env, schedule=self.schedule)
+        #     self.schedule, self.m_solved, self.results = build_milp_schedule(self.env, m,
+        #         schedule=self.schedule, settings=self.settings)
+        #     print("\nSolution for simulation horizon found.")
+        #     for t in range(self.env.n_steps):
+        #         self.time_stamps.append(self.env.sim_time)
+        #         self.schedule = self.env.step(self.schedule)
+        #         self.solved_models.append(self.m_solved)
+        #         self.model_results.append(self.results)   
+        #     print("Schedule: ", self.schedule)  
+        #     print("Results: ", self.model_results)
+        #     self.generate_gifs()
+        # try to add new for MPC to see if more batches available
+        # elif 'MPC' in self.env.settings['MIP_ALGO']:
+        #     m = self.build_model(self.env, schedule=self.schedule)
+        #     self.schedule, self.m_solved, self.results = build_milp_schedule(self.env, m,
+        #         schedule=self.schedule, settings=self.settings)
+        #     print("\nSolution for simulation horizon found.")
+        #     for t in range(self.env.n_steps):
+        #         self.time_stamps.append(self.env.sim_time)
+        #         self.schedule = self.env.step(self.schedule)
+        #         self.solved_models.append(self.m_solved)
+        #         self.model_results.append(self.results)   
+        #     print("Schedule: ", self.schedule)  
+        #     print("Results: ", self.model_results)
+        #     self.generate_gifs()
             
             # try to add for simp mpc, delete later if not working
-        elif 'SIMP_MPC' in self.env.settings['MIP_ALGO']:
-            m = self.build_model(self.env, schedule=self.schedule)
-            self.schedule, self.m_solved, self.results = build_milp_schedule(self.env, m,
-                schedule=self.schedule, settings=self.settings)
-            print("\nSolution for simulation horizon found.")
-            for t in range(self.env.n_steps):
-                self.time_stamps.append(self.env.sim_time)
-                self.schedule = self.env.step(self.schedule)
-                self.solved_models.append(self.m_solved)
-                self.model_results.append(self.results)   
-            print("Schedule: ", self.schedule)  
-            self.generate_gifs()
+        # elif 'SIMP_MPC' in self.env.settings['MIP_ALGO']:
+        #     m = self.build_model(self.env, schedule=self.schedule)
+        #     self.schedule, self.m_solved, self.results = build_milp_schedule(self.env, m,
+        #         schedule=self.schedule, settings=self.settings)
+        #     print("\nSolution for simulation horizon found.")
+        #     for t in range(self.env.n_steps):
+        #         self.time_stamps.append(self.env.sim_time)
+        #         self.schedule = self.env.step(self.schedule)
+        #         self.solved_models.append(self.m_solved)
+        #         self.model_results.append(self.results)   
+        #     print("Schedule: ", self.schedule)  
+        #     self.generate_gifs()
+######################################################################################################
 
         else:
             for t in range(self.env.n_steps):
+              
                 m = self.build_model(self.env, schedule=self.schedule)
                 if self.env.settings['MIP_ALGO'] == 'SMPC':
                     self.schedule, self.m_solved, self.results = build_smpc_schedule(
                         self.env, m, schedule=self.schedule, settings=self.settings)
 
                 else:
-                    # for MPC
+                    # for MPC ?
                     self.schedule, self.m_solved, self.results = build_milp_schedule(
-                        self.env, m, schedule=self.schedule, settings=self.settings)
-                       
-                print("\nSolution from Day: {:d}".format(self.env.sim_time))
-              
-                
+                        self.env, m, schedule=self.schedule, settings=self.settings)       
+                print("\nSolution from Day: {:d}".format(self.env.sim_time)) 
                 self.time_stamps.append(self.env.sim_time)
                 self.schedule = self.env.step(self.schedule)
-                
                 # if 'SMPC' not in self.env.settings['MIP_ALGO']:
                     # self.solved_models.append(self.m_solved)
                 self.model_results.append(self.results)
+                self.solved_models.append(self.m_solved)
+            self.generate_gifs()
         print(self.schedule)
-        self.generate_gifs()
+        
 
         # Save environment data
         # TODO: Change saving functions to an option
@@ -119,15 +136,16 @@ class schedulingMPC():
         if self.env.settings['MIP_ALGO'] != 'SMPC':
             cloudpickle.dump(self, open(agent_file, 'wb'))
 
-        self.generate_gifs()
+
 
     def generate_gifs(self):
-        plots = ['gantt', 'inventory', 'sales', 'shipment']
+        #plots = ['gantt', 'inventory', 'sales', 'shipment']
+        plots = ['gantt']
         for model, time in zip(self.solved_models, self.time_stamps):
             self.plot_gantt(model, time, save=True)
-            self.plot_inventory(model, time, save=True)
-            self.plot_sales(model, time, save=True)
-            self.plot_shipments(model, time, save=True)
+#            self.plot_inventory(model, time, save=True)
+#           self.plot_sales(model, time, save=True)
+ #           self.plot_shipments(model, time, save=True)
 
             # Build GIF at last time step
             if time == self.env.n_steps - 1:
@@ -148,11 +166,11 @@ class schedulingMPC():
         mip_gantt_plot(self.env, model, time_step, color_scheme=color_scheme, 
             save=save, path=self.settings['DATA_PATH'])
         
-    def plot_inventory(self, model, time_step=None, color_scheme=None, save=False):
-        if self.m_solved is None:
-            raise ValueError('Solve model by running .train() before viewing the plot.')
-        mip_inventory_plot(self.env, model, time_step,
-            color_scheme=color_scheme, save=save, path=self.settings['DATA_PATH'])
+    # def plot_inventory(self, model, time_step=None, color_scheme=None, save=False):
+    #     if self.m_solved is None:
+    #         raise ValueError('Solve model by running .train() before viewing the plot.')
+    #     mip_inventory_plot(self.env, model, time_step,
+    #         color_scheme=color_scheme, save=save, path=self.settings['DATA_PATH'])
         
     def plot_sales(self, model, time_step=None, color_scheme=None, save=False):
         if self.m_solved is None:

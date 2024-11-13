@@ -21,10 +21,16 @@ def create_agent(env, schedule=None):
 	elif env.settings['MIP_ALGO'] == 'SMPC': # Import stochastic MPC
 		from .mip_algos.stochastic_mip import buildStochasticMIP
 		agent = schedulingMPC(env, buildStochasticMIP, schedule=schedule)
+######################################################################################################
+		# not in original: 
 		# Add simplified deterministic mip
 	elif env.settings['MIP_ALGO'] == 'SIMP_MPC':
 		from .mip_algos.simplified_deterministic_mip import buildDeterministicMIP2
 		agent = schedulingMPC(env, buildDeterministicMIP2, schedule=schedule)
+	elif env.settings['MIP_ALGO'] == 'MPCRH':
+		from .mip_algos.deterministic_mip_rh import buildDeterministicMIPRH
+		agent = schedulingMPC(env, buildDeterministicMIPRH, schedule=schedule)
+######################################################################################################
 	
 	else:
 		raise ValueError('MIP_ALGO {} not recognized'.format(
