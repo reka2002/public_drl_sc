@@ -24,21 +24,21 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
-    #'AGENT_CLASS': 'RL',
-    'AGENT_CLASS': 'MIP',
+    'AGENT_CLASS': 'RL',
+   # 'AGENT_CLASS': 'MIP',
     'ENVIRONMENT': 'TARTAN',
     'N_PRODUCTS': 4,
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
-    'END_TIME': '2018-03-31',
+    'END_TIME': '2018-12-31',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
     'CONFIDENCE_LEVEL': 0,
     #'HEURISTIC_ALGO' : 'RANDOM',
-    'MIP_ALGO': 'GOD',
+   # 'MIP_ALGO': 'GOD',
    # 'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
-    'FORECAST': 'UNIFORM'
+   # 'FORECAST': 'UNIFORM'
     # 'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND'
     
 

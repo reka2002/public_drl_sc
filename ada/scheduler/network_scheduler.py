@@ -194,6 +194,7 @@ def network_scheduler(env, network, schedule, confidence_level=None, test=False)
         a_probs = np.vstack(a_probs)
         planning_data = np.hstack([heuristic_selection, a_probs])
     #print(planning_data)
+    print(schedule)
     return schedule, planning_data
 
 # Get schedule value estimation
