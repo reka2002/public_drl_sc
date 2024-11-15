@@ -13,7 +13,7 @@ from datetime import datetime
 import torch
 from ..networks.networks import policyEstimator, valueEstimator
 from ...scheduler.network_scheduler import network_scheduler, estimate_schedule_value
-from ...environments.env_utils import get_planning_data_headers
+from ...environments.env_utils import get_planning_data_headers, plot_gantt
 
 # Define a2c class
 class a2c():
@@ -33,6 +33,10 @@ class a2c():
         self.entropy_loss, self.value_loss, self.value_grads = [], [], []
         self.kl_div = []
 
+        ############################
+            # ADD
+        self.episode_rewards=[]
+        ############################
     def check_a2c_settings(self, settings):
         # Add a2c specific settings here
         return settings
@@ -108,6 +112,10 @@ class a2c():
         N_EPISODES = self.env.settings['N_EPISODES']
         for ep in range(N_EPISODES):
             self.env.reset()
+            ############################
+            # ADD
+            episode_reward=0
+            ############################
             self.value_log = [] 
 
             self.schedule = None
@@ -131,10 +139,17 @@ class a2c():
                         self.value_est, self.schedule))
 
                 self.schedule = self.env.step(self.schedule)
+                ############################
+                episode_reward += sum(self.env.containers.total_reward)
+                ############################
                 self.step += 1
                 if self.env.sim_time >= self.env.n_steps:
                     break
 
+            ############################
+            self.episode_rewards.append(episode_reward)
+            self.log_episode_rewards()
+            ############################
             self.log_episode_data(_planning_data, ep)
 
             # Kill if stuck producing one product
@@ -205,6 +220,8 @@ class a2c():
         self.batch_actions = []
         self.batch_rewards = []
         self.batch_value_log = []
+        # set up data list for rewards per episode
+        self.episode_rewards = []
         
         action_space = self.env.action_list
 
@@ -233,7 +250,20 @@ class a2c():
             self.schedule = self.env.step(self.schedule)
             self.step += 1
             if self.env.sim_time >= self.env.n_steps:
-                break 
+                break
+        #print('Final schedule: ', self.schedule) 
+       # self.save_schedule_RL(schedule=self.schedule)
+
+
+    # Add function to save schedule
+    def save_schedule_RL(self): 
+        schedule_file = os.path.join(self.settings['DATA_PATH'], 'schedule.txt') 
+        os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
+        np.savetxt("schedule_file_RL.csv", self.schedule, fmt="%.2f", delimiter=",")
+        # with open(schedule_file, 'w') as file: 
+        #     for item in self.schedule: 
+        #         file.write(f"{item}\n") 
+             
 
     def log_episode_data(self, data, episode):
         self.value_log = np.array(self.value_log)
@@ -369,3 +399,25 @@ class a2c():
                 if policy_data.ndim > 2:
                     raise ValueError('More than 2 dimensions in data to be written.')
             file.close()
+
+    ##################################
+    def log_episode_rewards(self, file_name='episode_rewards.csv'):
+       
+        path = Path(self.settings['DATA_PATH'])
+        path.mkdir(parents=True, exist_ok=True)
+        file_path = os.path.join(self.settings['DATA_PATH'], file_name)
+
+
+        with open(file_path, 'a') as f:
+
+            if os.stat(file_path).st_size == 0:
+                f.write("episode,total_reward\n")
+
+            latest_episode = len(self.episode_rewards)
+            f.write(f"{latest_episode}{self.episode_rewards}\n")
+
+
+
+    # add plott gant to plot
+    # def plot_a2c(self):
+    #     plot_gantt(self.env, save_location='DATA_PATH')

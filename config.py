@@ -40,6 +40,17 @@ config = {
    # 'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
    # 'FORECAST': 'UNIFORM'
     # 'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND'
+
+
+    # Add Hyperparameter values used to train the DRL agent
+    'GAMMA': 0.95,
+    'BETA': 0.0001,
+    'ACTOR_LR': 0.000005,
+    'CRITIC_LR': 0.0001,
+    'BATCH_SIZE': 128,
+    'N_HIDDEN_NODES': 512,
+    'N_HIDDEN_LAYERS': 12
+
     
 
     
@@ -366,3 +377,5 @@ def set_up_production_environment(args, default=None):
     # save_config_file(config_data)
 
     return agent
+
+
