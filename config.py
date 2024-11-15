@@ -24,8 +24,8 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
-    'AGENT_CLASS': 'RL',
-   # 'AGENT_CLASS': 'MIP',
+   'AGENT_CLASS': 'RL',
+    #'AGENT_CLASS': 'MIP',
     'ENVIRONMENT': 'TARTAN',
     'N_PRODUCTS': 4,
     'START_TIME': '2018-01-01',
@@ -35,23 +35,8 @@ config = {
     'GAP': 0.001,
     'TIME_LIMIT': 120,
     'CONFIDENCE_LEVEL': 0,
-    #'HEURISTIC_ALGO' : 'RANDOM',
-   # 'MIP_ALGO': 'GOD',
-   # 'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
-   # 'FORECAST': 'UNIFORM'
-    # 'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND'
-
-
-    # Add Hyperparameter values used to train the DRL agent
-    'GAMMA': 0.95,
-    'BETA': 0.0001,
-    'ACTOR_LR': 0.000005,
-    'CRITIC_LR': 0.0001,
-    'BATCH_SIZE': 128,
-    'N_HIDDEN_NODES': 512,
-    'N_HIDDEN_LAYERS': 12
-
-    
+    'HEURISTIC_ALGO' : 'RANDOM',
+    'MIP_ALGO': 'MPC'
 
     
 
