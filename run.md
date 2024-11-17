@@ -4,6 +4,8 @@
 
 python train.py --config default
 
+python test.py --config default
+
 ### To run with specified config file:
 
 python train.py --config="myfile.txt"

@@ -13,7 +13,7 @@ from datetime import datetime
 import torch
 from ..networks.networks import policyEstimator, valueEstimator
 from ...scheduler.network_scheduler import network_scheduler, estimate_schedule_value
-from ...environments.env_utils import get_planning_data_headers, plot_gantt
+from ...environments.env_utils import get_planning_data_headers, plot_gantt, get_current_state
 
 # Define a2c class
 class a2c():
@@ -204,7 +204,9 @@ class a2c():
             path = os.path.join(self.env.settings['DATA_PATH'])
             self.value_est.saveWeights(path)
 
+        # self.generate_schedule()
         return print("Network trained")
+        
 
     def predict(self):
         print("Building schedule until {}".format(self.settings['END_TIME']))
@@ -417,7 +419,22 @@ class a2c():
             f.write(f"{latest_episode}{self.episode_rewards}\n")
 
 
+    
+    def generate_schedule(self):
+        # self.policy_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/actor.pt'))
+        # self.value_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/critic.pt'))
+        self.policy_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc' + '/actor_training.pt'))
+        self.value_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc' + '/critic_training.pt'))
 
-    # add plott gant to plot
-    # def plot_a2c(self):
-    #     plot_gantt(self.env, save_location='DATA_PATH')
+        self.predict()
+        print("Generated Schedule:", self.schedule)
+        # print("Total Reward for the Generated Schedule:", total_reward)
+        self.save_schedule_RL()
+
+        return self.schedule
+    
+        # Add function to save schedule
+    def save_schedule_RL(self): 
+        schedule_file = os.path.join(self.settings['DATA_PATH'], 'schedule.txt') 
+        os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
+        np.savetxt("schedule_file_Rl_CONCAT_FORECAST.csv", self.schedule, fmt="%.2f", delimiter=",")

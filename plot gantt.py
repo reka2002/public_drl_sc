@@ -1,55 +1,50 @@
-# import pandas as pd
-# import matplotlib.pyplot as plt
-# import numpy as np
-
-# # Provided schedule array
-# schedule = np.loadtxt("schedule_file_GOD.csv", delimiter=",")
-# schedule2 = np.loadtxt("schedule_file_GOD.csv", delimiter=",")
-
-# # Convert the schedule array into a DataFrame with appropriate column names
-# df = pd.DataFrame(schedule, columns=[
-#     'batch_num', 'gmid', 'production_rate', 'prod_qty', 'prod_time',
-#     'prod_start_time', 'prod_end_time', 'cure_time', 'cure_end_time',
-#     'booked_inventory', 'action', 'off_grade_production', 'actual_production'
-# ])
-
-# # Create a color map for each unique `gmid`
-# unique_gmid = df['gmid'].unique()
-# color_map = {gmid: plt.cm.tab10(i % 10) for i, gmid in enumerate(unique_gmid)}
-
-# # Initialize plot
-# fig, ax = plt.subplots(figsize=(10, 6))
-
-# # Create Gantt bars for each product type based on `prod_start_time` and `prod_time`
-# for i, gmid in enumerate(unique_gmid):
-#     subset = df[df['gmid'] == gmid]
-#     # Each row represents a bar from `prod_start_time` to `prod_end_time`
-#     ax.broken_barh([(row['prod_start_time'], row['prod_end_time'] - row['prod_start_time']) for _, row in subset.iterrows()],
-#                    (i - 0.4, 0.8),  # Position bars for each product type
-#                    facecolors=color_map[gmid],
-#                    edgecolor='black')
-
-# # Set labels and title
-# ax.set_yticks(np.arange(len(unique_gmid)))
-# ax.set_yticklabels([f"Product {int(g)}" for g in unique_gmid])
-# ax.set_xlabel("Time (days)")
-# ax.set_ylabel("Product Type")
-# ax.set_title("Gantt Chart for Product Types by Production Time")
-# ax.grid(True)
-
-# # Show plot
-# plt.show()
-
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
 # Assuming schedule_file_GOD.csv includes all the schedules, you may need to load four separate arrays or files for each.
-schedule = np.loadtxt("schedule_file_GOD.csv", delimiter=",")
-schedule1 = np.loadtxt("schedule_file_GOD.csv", delimiter=",")
-schedule2 = np.loadtxt("schedule_file_GOD.csv", delimiter=",")
-schedule3 = np.loadtxt("schedule_file_GOD.csv", delimiter=",")
+# schedule = np.loadtxt("schedule_file_RL_60.csv", delimiter=",")
+# schedule1 = np.loadtxt("schedule_file_MPCRH.csv", delimiter=",")
+# schedule2 = np.loadtxt("schedule_file_MPC.csv", delimiter=",")
+# schedule3 = np.loadtxt("schedule_file_GOD.csv", delimiter=",")
+
+# # run MPC for 3 forecast
+# schedule = np.loadtxt("schedule_file_MPC.csv", delimiter=",")
+# schedule1 = np.loadtxt("schedule_file_MPC_STOCHASTIC.csv", delimiter=",")
+# # running for so long ??
+# schedule2 = np.loadtxt("schedule_file_MPC_DETERMINISTIC.csv", delimiter=",")
+
+
+# # run MPC RH for 3 forecast
+# schedule = np.loadtxt("schedule_file_MPCRH.csv", delimiter=",") # uniform
+# schedule1 = np.loadtxt("schedule_file_MPCRH_STOCHASTIC.csv", delimiter=",") # stochastic
+# schedule2 = np.loadtxt("schedule_file_MPCRH_DETERMINISTIC.csv", delimiter=",") # deterministic
+
+# # run SMPC for 3 forecast
+
+
+
+# # run RL for 3 forecast
+# schedule = np.loadtxt("schedule_file_RL_60.csv", delimiter=",")
+# schedule1 = np.loadtxt("schedule_file_RL_STOCHASTIC.csv", delimiter=",")
+# schedule2 = np.loadtxt("schedule_file_RL_DETERMINISTIC.csv", delimiter=",")
+
+
+
+
+# # run RL and MILP for weekend shipment false, uniform
+# schedule1 = np.loadtxt("schedule_file_MPCRH_ws_false.csv", delimiter=",")
+# # running so long again 
+# schedule2 = np.loadtxt("schedule_file_MPC_ws_false.csv", delimiter=",")
+
+
+# # run RL for different states
+# INV_BALANCE_PRODUCTION
+schedule = np.loadtxt("schedule_file_RL_60.csv", delimiter=",")
+schedule1 = np.loadtxt("schedule_file_RL_IO_PRODUCT.csv", delimiter=",")
+#io rTIO
+
+#CONCAT_FORECAST
 
 # Function to plot a Gantt chart for a given schedule DataFrame
 def plot_gantt(ax, df, title):
@@ -73,7 +68,7 @@ def plot_gantt(ax, df, title):
     ax.grid(True)
 
 # Convert the schedule arrays into DataFrames with appropriate column names
-df_schedule = pd.DataFrame(schedule, columns=[
+df_schedule = pd.DataFrame(schedule1, columns=[
     'batch_num', 'gmid', 'production_rate', 'prod_qty', 'prod_time',
     'prod_start_time', 'prod_end_time', 'cure_time', 'cure_end_time',
     'booked_inventory', 'action', 'off_grade_production', 'actual_production'
@@ -81,15 +76,19 @@ df_schedule = pd.DataFrame(schedule, columns=[
 
 df_schedule1 = pd.DataFrame(schedule1, columns=df_schedule.columns)
 df_schedule2 = pd.DataFrame(schedule2, columns=df_schedule.columns)
-df_schedule3 = pd.DataFrame(schedule3, columns=df_schedule.columns)
+#df_schedule3 = pd.DataFrame(schedule3, columns=df_schedule.columns)
 
 # Create a 2x2 grid of subplots
-fig, axs = plt.subplots(4, 1, figsize=(12, 10))
+fig, axs = plt.subplots(3, 1, figsize=(12, 10))
 
 # Plot Gantt charts for each schedule on the respective subplot
-plot_gantt(axs[0], df_schedule, "Gantt Chart for Schedule")
-plot_gantt(axs[1], df_schedule1, "Gantt Chart for Schedule1")
-plot_gantt(axs[2], df_schedule2, "Gantt Chart for Schedule2")
-plot_gantt(axs[3], df_schedule3, "Gantt Chart for Schedule3")
+# plot_gantt(axs[0], df_schedule, "RL")
+# plot_gantt(axs[1], df_schedule1, "MILP RH UNIFORM")
+# plot_gantt(axs[2], df_schedule2, "MILP SH UNIFORM")
+#plot_gantt(axs[3], df_schedule3, "PI MILP")
+#plot_gantt(axs[0], df_schedule, "RL")
+plot_gantt(axs[0], df_schedule, "RL UNIFORM")
+plot_gantt(axs[1], df_schedule1, "RL STOCHASTIC")
+plot_gantt(axs[2], df_schedule2, "RL DETERMINISTIC")
 plt.tight_layout()
 plt.show()

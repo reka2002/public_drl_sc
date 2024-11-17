@@ -180,7 +180,7 @@ class schedulingMPC():
     def save_schedule(self): 
         schedule_file = os.path.join(self.settings['DATA_PATH'], 'schedule.txt') 
         os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
-        np.savetxt("schedule_file_GOD.csv", self.schedule, fmt="%.2f", delimiter=",")
+        np.savetxt("schedule_file_MPC_ws_false.csv", self.schedule, fmt="%.2f", delimiter=",")
         # with open(schedule_file, 'w') as file: 
         #     for item in self.schedule: 
         #         file.write(f"{item}\n") 
