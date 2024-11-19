@@ -402,7 +402,7 @@ class a2c():
                     raise ValueError('More than 2 dimensions in data to be written.')
             file.close()
 
-    ##################################
+    
     def log_episode_rewards(self, file_name='episode_rewards.csv'):
        
         path = Path(self.settings['DATA_PATH'])
@@ -419,22 +419,28 @@ class a2c():
             f.write(f"{latest_episode}{self.episode_rewards}\n")
 
 
-    
+    ###############################################################################
     def generate_schedule(self):
         # self.policy_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/actor.pt'))
         # self.value_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/critic.pt'))
-        self.policy_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc' + '/actor_training.pt'))
-        self.value_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc' + '/critic_training.pt'))
+        self.policy_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/actor_training.pt'))
+        self.value_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/critic_training.pt'))
 
+        
+        start_time = time.time()
         self.predict()
+        end_time = time.time()
+        inference_time = end_time - start_time
+        print(f"Inference time: {inference_time:.4f} seconds")
         print("Generated Schedule:", self.schedule)
         # print("Total Reward for the Generated Schedule:", total_reward)
         self.save_schedule_RL()
 
         return self.schedule
     
+    #########################################################
         # Add function to save schedule
     def save_schedule_RL(self): 
         schedule_file = os.path.join(self.settings['DATA_PATH'], 'schedule.txt') 
         os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
-        np.savetxt("schedule_file_Rl_CONCAT_FORECAST.csv", self.schedule, fmt="%.2f", delimiter=",")
+        np.savetxt("schedule_file_Rl_IO_PRODUCT_new.csv", self.schedule, fmt="%.2f", delimiter=",")

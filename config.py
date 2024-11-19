@@ -24,29 +24,57 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
-  # 'AGENT_CLASS': 'RL',
-    'AGENT_CLASS': 'MIP',
+  'AGENT_CLASS': 'RL',
+  # 'AGENT_CLASS': 'MIP',
     'ENVIRONMENT': 'TARTAN',
-    'N_PRODUCTS': 4,
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
     'END_TIME': '2018-03-31',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
-    'CONFIDENCE_LEVEL': 0,
-   # 'HEURISTIC_ALGO' : 'RANDOM',
-    #'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND',
-    'FORECAST': 'UNIFORM',
-    #'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
 
-   # 'N_HIDDEN_NODES': 512,
-    #'N_HIDDEN_LAYERS': 12,
-    'MIP_ALGO': 'MPC'
+    #use for heuristic
+     'CONFIDENCE_LEVEL': 0,
+#    # 'HEURISTIC_ALGO' : 'RANDOM', 
+#     #'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND',
+       'FORECAST': 'UNIFORM',
+#     'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
+
+# Use for the simplified example
+#   'MIP_ALGO': 'MPCRH',
+#     'DEMAND_MODEL': 'EXCEL_DEMAND',
+#     'EXCEL_DEMAND_FILE': 'demand_data',
+#      'N_PRODUCTS': 2,
+#      'ORDER_SIZE': 1,
+#      'WORKING_CAPITAL_PERCENTAGE': 10,
+#   #  'FORECAST': 'FALSE',
+#     'FORECAST_ACCURACY': 0,
+#     'FIXED_PLANNING_HORIZON': 5,
+#     'LOOKAHEAD_PLANNING_HORIZON': 10,
+
+# Add Hyperparameter values used to train the DRL agent
+    # 'GAMMA': 0.95,
+    # 'BETA': 0.0001,
+    # 'ACTOR_LR': 0.000005,
+    # 'CRITIC_LR': 0.0001,
+    # 'BATCH_SIZE': 128,
+# To keep network dimensions same as trained
+    'N_HIDDEN_NODES': 512,
+    'N_HIDDEN_LAYERS': 12,
+      'N_PRODUCTS': 4,
 
     
-    #'STATE_SETTING': 'INV_BALANCE_PRODUCTION'
+
+    
+    #'STATE_SETTING': 'IO_PRODUCT'
     #'STATE_SETTING': 'CONCAT_FORECAST'
+# #     self.state_settings = ['INVENTORY', # State is just the inventory level
+#         'IO_RATIO', # Ratio of inventory to orders
+#         'IO_PRODUCT', # Ratio of inventory to orders + current product
+#         'INV_BALANCE_PRODUCTION', # Inventory - open orders and current product
+#         'CONCAT_FORECAST' # INV_BALANCE_PRODUCTION and flattened vector of monthly net forecast
+#         ] 
 
     # And so on...
 }

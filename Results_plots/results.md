@@ -6,6 +6,7 @@ Q:
 - does it not change based on days bc of the seasonal demand ?
 - why batches shorter for simplified and MPC? is it because no forecast?
 - smoothed demand forecast for RH?
+- pickle for MILP
 
 
 # Results for MILPs for 12 day, using generated seasonal data

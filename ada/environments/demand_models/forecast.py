@@ -205,7 +205,7 @@ def build_uniform_forecast(env):
             net_forecast = max(env.monthly_forecast[i, j] - agg_qty[i, j], 0)
             if net_forecast <= 0:
                 continue
-            #plot_net_forecast(env, g, month)
+#            plot_net_forecast(env, g, month)
             daily_avg_forecast = net_forecast / n_days_remaining if n_days_remaining > 0 else 0
             n_orders_per_day = daily_avg_forecast / env.order_size
             full_orders_per_day = int(n_orders_per_day)

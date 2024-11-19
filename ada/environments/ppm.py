@@ -639,6 +639,8 @@ class core():
     agg_ob_demand = int(orders_in_view[np.where(
         orders_in_view[:,self.ob_indices['planned_gi_month']]<=max(months))[0],
         self.ob_indices['order_qty']].sum())
+        # int(orders_in_view[:,self.ob_indices['planned_gi_month']])<=max(int(months)))[0],
+        # self.ob_indices['order_qty']].sum())
     # Ensure aggregate values match
     assert agg_monthly_demand == agg_ob_demand, \
         "Quantities do not match.\nDay: {}\nOrder Book: {}\nAgg Monthly Demand: {}".format(

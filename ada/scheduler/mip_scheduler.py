@@ -111,7 +111,8 @@ class schedulingMPC():
                     # self.solved_models.append(self.m_solved)
                 self.model_results.append(self.results)
                 self.solved_models.append(self.m_solved)
-            #self.generate_gifs()
+           # self.generate_gifs()
+           
         print(self.schedule)
         print("Results: ", self.model_results)
         self.save_schedule()
@@ -180,7 +181,7 @@ class schedulingMPC():
     def save_schedule(self): 
         schedule_file = os.path.join(self.settings['DATA_PATH'], 'schedule.txt') 
         os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
-        np.savetxt("schedule_file_MPC_ws_false.csv", self.schedule, fmt="%.2f", delimiter=",")
+        np.savetxt("schedule_file_SIMP_MPC.csv", self.schedule, fmt="%.2f", delimiter=",")
         # with open(schedule_file, 'w') as file: 
         #     for item in self.schedule: 
         #         file.write(f"{item}\n") 
@@ -191,9 +192,9 @@ class schedulingMPC():
         plots = ['gantt']
         for model, time in zip(self.solved_models, self.time_stamps):
             self.plot_gantt(model, time, save=True)
-#            self.plot_inventory(model, time, save=True)
-#           self.plot_sales(model, time, save=True)
- #           self.plot_shipments(model, time, save=True)
+            self.plot_inventory(model, time, save=True)
+            self.plot_sales(model, time, save=True)
+            self.plot_shipments(model, time, save=True)
 
             # Build GIF at last time step
             if time == self.env.n_steps - 1:
@@ -214,11 +215,11 @@ class schedulingMPC():
         mip_gantt_plot(self.env, model, time_step, color_scheme=color_scheme, 
             save=save, path=self.settings['DATA_PATH'])
         
-    # def plot_inventory(self, model, time_step=None, color_scheme=None, save=False):
-    #     if self.m_solved is None:
-    #         raise ValueError('Solve model by running .train() before viewing the plot.')
-    #     mip_inventory_plot(self.env, model, time_step,
-    #         color_scheme=color_scheme, save=save, path=self.settings['DATA_PATH'])
+    def plot_inventory(self, model, time_step=None, color_scheme=None, save=False):
+        if self.m_solved is None:
+            raise ValueError('Solve model by running .train() before viewing the plot.')
+        mip_inventory_plot(self.env, model, time_step,
+            color_scheme=color_scheme, save=save, path=self.settings['DATA_PATH'])
         
     def plot_sales(self, model, time_step=None, color_scheme=None, save=False):
         if self.m_solved is None:

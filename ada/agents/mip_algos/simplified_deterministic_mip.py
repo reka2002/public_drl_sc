@@ -50,6 +50,7 @@ def buildDeterministicMIP2(env, schedule=None, *args, **kwargs):
     m.beta = {gmid: mean_values[idx] for idx, gmid in enumerate(m.gmids)}
     m.order_dict, m.order_cols = build_order_dict(env, m.order_book)
     m.order_dict_disc = discount_order_dict(m)
+    
 
     ################### SETS #############################################
     # Adding -1 to the time index because we need to know the transition 
