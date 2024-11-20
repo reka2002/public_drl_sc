@@ -2,7 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-schedule = np.loadtxt("schedule_file_SIMP_MPC.csv", delimiter=",")
+schedule = np.loadtxt("Results_plots/schedule_file_SIMP_MPC.csv", delimiter=",")
+# try new
+#schedule = np.loadtxt("Results_plots/schedule_file_SIMP_MPC_new.csv", delimiter=",")
 
 
 def plot_gantt(ax, df, title):

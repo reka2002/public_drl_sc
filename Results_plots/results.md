@@ -7,6 +7,7 @@ Q:
 - why batches shorter for simplified and MPC? is it because no forecast?
 - smoothed demand forecast for RH?
 - pickle for MILP
+- random
 
 
 # Results for MILPs for 12 day, using generated seasonal data

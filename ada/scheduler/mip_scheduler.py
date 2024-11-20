@@ -111,7 +111,7 @@ class schedulingMPC():
                     # self.solved_models.append(self.m_solved)
                 self.model_results.append(self.results)
                 self.solved_models.append(self.m_solved)
-           # self.generate_gifs()
+            self.generate_gifs()
            
         print(self.schedule)
         print("Results: ", self.model_results)
