@@ -37,8 +37,8 @@ config = {
     #use for heuristic
      'CONFIDENCE_LEVEL': 0,
 #    # 'HEURISTIC_ALGO' : 'RANDOM', 
-#     #'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND',
-   #    'FORECAST': 'UNIFORM',
+  #  'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND',
+       'FORECAST': 'UNIFORM',
    #  'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
 
 # Use for the simplified example
@@ -65,14 +65,14 @@ config = {
     # 'CRITIC_LR': 0.0001,
     # 'BATCH_SIZE': 128,
 # To keep network dimensions same as trained
-    # 'N_HIDDEN_NODES': 512,
-    # 'N_HIDDEN_LAYERS': 12,
-    #   'N_PRODUCTS': 2,
+    'N_HIDDEN_NODES': 512,
+    'N_HIDDEN_LAYERS': 12,
+      'N_PRODUCTS': 4,
 
     
 
     
-    #'STATE_SETTING': 'IO_PRODUCT'
+    'STATE_SETTING': 'IO_PRODUCT'
     #'STATE_SETTING': 'CONCAT_FORECAST'
 # #     self.state_settings = ['INVENTORY', # State is just the inventory level
 #         'IO_RATIO', # Ratio of inventory to orders

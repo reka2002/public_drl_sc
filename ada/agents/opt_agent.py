@@ -22,11 +22,12 @@ def create_agent(env, schedule=None):
 		from .mip_algos.stochastic_mip import buildStochasticMIP
 		agent = schedulingMPC(env, buildStochasticMIP, schedule=schedule)
 ######################################################################################################
-		# not in original: 
-		# Add simplified deterministic mip
+		# Not in original: 
+		# Add simplified deterministic MIP
 	elif env.settings['MIP_ALGO'] == 'SIMP_MPC':
 		from .mip_algos.simplified_deterministic_mip import buildDeterministicMIP2
 		agent = schedulingMPC(env, buildDeterministicMIP2, schedule=schedule)
+		# Add RH MIP
 	elif env.settings['MIP_ALGO'] == 'MPCRH':
 		from .mip_algos.deterministic_mip_rh import buildDeterministicMIPRH
 		agent = schedulingMPC(env, buildDeterministicMIPRH, schedule=schedule)
