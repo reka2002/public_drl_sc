@@ -40,8 +40,8 @@ schedule3 = np.loadtxt("Results_plots/schedule_file_GOD.csv", delimiter=",")
 
 # # run RL for different states
 # INV_BALANCE_PRODUCTION
-# schedule = np.loadtxt("schedule_file_RL_60.csv", delimiter=",")
-# schedule1 = np.loadtxt("schedule_file_RL_IO_PRODUCT_new.csv", delimiter=",")
+# schedule = np.loadtxt("schedule_file_RL_new_new.csv", delimiter=",")
+# schedule1 = np.loadtxt("schedule_file_RL_IO_PRODUCT_new_new.csv", delimiter=",")
 #io rTIO
 
 
