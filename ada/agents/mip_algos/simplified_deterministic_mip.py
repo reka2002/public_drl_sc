@@ -76,9 +76,12 @@ def buildDeterministicMIP2(env, schedule=None, *args, **kwargs):
     m.transition_losses = {(j, i): env.transition_matrix[idx, jdx] 
         for idx, i in enumerate(m.production_states)
         for jdx, j in enumerate(m.production_states)}
+    ###################################################################
+    # Not in original
     m.transition_costs = {(j, i): env.transition_costs[idx, jdx] 
         for idx, i in enumerate(m.production_states)
         for jdx, j in enumerate(m.production_states)}
+    ###################################################################
     
     ################### VARIABLES #########################################
     # Binary Variables
