@@ -422,6 +422,8 @@ class a2c():
 
 
     ###############################################################################
+    # Not in original
+    # Add function to generate schedule from trained network
     def generate_schedule(self):
         # self.policy_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/actor.pt'))
         # self.value_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/critic.pt'))
@@ -441,7 +443,8 @@ class a2c():
         return self.schedule
     
     #########################################################
-        # Add function to save schedule
+    # Not in original
+    # Add function to save schedule
     def save_schedule_RL(self): 
         schedule_file = os.path.join(self.settings['DATA_PATH'], 'schedule.txt') 
         os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
