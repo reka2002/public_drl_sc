@@ -47,6 +47,7 @@ class schedulingMPC():
             # self.generate_gifs()
             #self.plot_gantt_new(schedule=self.schedule)
 ######################################################################################################
+# WRONG 
 # not in original
         # add RH model
         # if 'MPCRH' in self.env.settings['MIP_ALGO']:
@@ -115,7 +116,11 @@ class schedulingMPC():
            
         print(self.schedule)
         print("Results: ", self.model_results)
+        ###################################################################
+        # Not in original
         self.save_schedule()
+        ###################################################################
+
         
 
         # Save environment data
@@ -139,53 +144,15 @@ class schedulingMPC():
             os.makedirs(os.path.basename(agent_file), exist_ok=True)
         if self.env.settings['MIP_ALGO'] != 'SMPC':
             cloudpickle.dump(self, open(agent_file, 'wb'))
-
-
-    # Add a new figure for plot the gantt
-
-    def plot_gantt_new(schedule):
-        df = pd.DataFrame(schedule, columns=[
-        'batch_num', 'gmid', 'production_rate', 'prod_qty', 'prod_time',
-        'prod_start_time', 'prod_end_time', 'cure_time', 'cure_end_time',
-        'booked_inventory', 'action', 'off_grade_production', 'actual_production'
-    ])
-
-        # Create a color map for each unique `gmid`
-        unique_gmid = df['gmid'].unique()
-        color_map = {gmid: plt.cm.tab10(i % 10) for i, gmid in enumerate(unique_gmid)}
-
-        # Initialize plot
-        fig, ax = plt.subplots(figsize=(10, 6))
-
-        # Create Gantt bars for each product type based on `prod_start_time` and `prod_time`
-        for i, gmid in enumerate(unique_gmid):
-            subset = df[df['gmid'] == gmid]
-            # Each row represents a bar from `prod_start_time` to `prod_end_time`
-            ax.broken_barh([(row['prod_start_time'], row['prod_end_time'] - row['prod_start_time']) for _, row in subset.iterrows()],
-                        (i - 0.4, 0.8),  # Position bars for each product type
-                        facecolors=color_map[gmid],
-                        edgecolor='black')
-
-        # Set labels and title
-        ax.set_yticks(np.arange(len(unique_gmid)))
-        ax.set_yticklabels([f"Product {int(g)}" for g in unique_gmid])
-        ax.set_xlabel("Time")
-        ax.set_ylabel("Product Type")
-        ax.set_title("Gantt Chart for Product Types by Production Time")
-        ax.grid(True)
-
-        # Show plot
-        plt.show()
     
+    ###################################################################
+    # Not in original
     # Add function to save schedule
     def save_schedule(self): 
         schedule_file = os.path.join(self.settings['DATA_PATH'], 'schedule.txt') 
         os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
         np.savetxt("schedule_file_SIMP_MPC.csv", self.schedule, fmt="%.2f", delimiter=",")
-        # with open(schedule_file, 'w') as file: 
-        #     for item in self.schedule: 
-        #         file.write(f"{item}\n") 
-             
+    ###################################################################
     
     def generate_gifs(self):
         #plots = ['gantt', 'inventory', 'sales', 'shipment']
