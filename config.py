@@ -29,7 +29,7 @@ config = {
     'ENVIRONMENT': 'TARTAN',
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
-    'END_TIME': '2018-03-31',
+    'END_TIME': '2018-01-05',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
@@ -65,15 +65,25 @@ config = {
     # 'CRITIC_LR': 0.0001,
     # 'BATCH_SIZE': 128,
 # To keep network dimensions same as trained
-    'N_HIDDEN_NODES': 512,
-    'N_HIDDEN_LAYERS': 12,
-      'N_PRODUCTS': 4,
+  #  'N_HIDDEN_NODES': 64,
+   # 'N_HIDDEN_LAYERS': 1,
+
+ # Configuration values for simplified example 
+   'N_HIDDEN_NODES': 3,
+   'N_HIDDEN_LAYERS': 1,
+   'N_PRODUCTS': 2,
+    'N_EPISODES': 1000,
+   'RANDOM_SEED': 1733183865,
+   'STATE_SETTING': 'INVENTORY',
+    'BATCH_SIZE': 100,
+  #  'GRADIENT_CLIPPING': False
+
 
     
 
-    
-    'STATE_SETTING': 'IO_PRODUCT'
-    #'STATE_SETTING': 'CONCAT_FORECAST'
+   #  'STATE_SETTING': 'IO-PRODUCT'
+  #  'STATE_SETTING': 'IO_PRODUCT'
+  #  'STATE_SETTING': 'INVENTORY'
 # #     self.state_settings = ['INVENTORY', # State is just the inventory level
 #         'IO_RATIO', # Ratio of inventory to orders
 #         'IO_PRODUCT', # Ratio of inventory to orders + current product

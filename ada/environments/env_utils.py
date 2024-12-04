@@ -355,7 +355,7 @@ def observation_space(env):
         observation_space = 2 * observation_space
         observation_space = np.hstack([np.array(observation_space),
             np.zeros(12*env.n_products)])
-
+    #print('State actor: ',  np.array(observation_space))
     return np.array(observation_space)
 
 # Calculate the customer service level

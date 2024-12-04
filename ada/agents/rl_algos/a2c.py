@@ -129,15 +129,16 @@ class a2c():
                     
                 self.schedule, planning_data = network_scheduler(self.env,
                     self.policy_est, self.schedule)
+              #  print(' Episode: ', ep,  'New state:', self.env.observation_space)
                 
-   
                 if planning_data is not None:
                     _planning_data.append(planning_data)
-                    print('Planning data train: ', planning_data)
+                    #print('Planning data train: ', planning_data)
 
                 if self.value_est is not None:
                     self.value_log.append(estimate_schedule_value(self.env, 
                         self.value_est, self.schedule))
+                print('ep: ', ep, 'value', self.value_log)
 
                 self.schedule = self.env.step(self.schedule)
                 ############################
@@ -163,6 +164,7 @@ class a2c():
             if ((ep + 1) % self.env.settings['BATCH_SIZE'] == 0 and ep > 0) or (
                 ep == N_EPISODES - 1 and ep > 0):
                 self.update_networks()
+
 
                 # Save data since last batch
                 data_since_last_batch = np.array(
@@ -206,6 +208,7 @@ class a2c():
             self.value_est.saveWeights(path)
 
         # self.generate_schedule()
+        print('Schedule: ', self.schedule)
         return print("Network trained")
         
 
@@ -243,9 +246,10 @@ class a2c():
             self.schedule, planning_data = network_scheduler(self.env,
                 self.policy_est, self.schedule)
             
+            
             if planning_data is not None:
                 _planning_data.append(planning_data)
-                print('Planning data predict: ', planning_data)
+                #print('Planning data predict: ', planning_data)
 
             if self.value_est is not None:
                 self.value_log.append(estimate_schedule_value(self.env, 
@@ -255,7 +259,7 @@ class a2c():
             self.step += 1
             if self.env.sim_time >= self.env.n_steps:
                 break
-        #print('Final schedule: ', self.schedule) 
+        print('Final schedule: ', self.schedule) 
        # self.save_schedule_RL(schedule=self.schedule)
 
 
@@ -435,8 +439,8 @@ class a2c():
         self.predict()
         end_time = time.time()
         inference_time = end_time - start_time
-        print(f"Inference time: {inference_time:.4f} seconds")
-        print("Generated Schedule:", self.schedule)
+        #print(f"Inference time: {inference_time:.4f} seconds")
+        #print("Generated Schedule:", self.schedule)
         # print("Total Reward for the Generated Schedule:", total_reward)
         self.save_schedule_RL()
 

@@ -14,12 +14,17 @@ import os
 from warnings import warn
 from ..rl_algos.rl_utils import check_device_settings, torchToNumpy
 
+
 class policyEstimator(nn.Module):
     def __init__(self, env, settings):
         super(policyEstimator, self).__init__()
+        ######################################################
+
+        #####################################################
 
         self.device = check_device_settings(settings)
         self.n_inputs = env.observation_space.shape[0]
+        #print('State actor: ',  env.observation_space)
         try:
             self.n_outputs = env.action_space.n 
         except AttributeError:
@@ -37,6 +42,12 @@ class policyEstimator(nn.Module):
         self.bias = settings['BIAS']
         self.beta = settings['BETA']
         self.action_space = np.arange(self.n_outputs)
+        ####################################################################
+        # added
+        # self.log_path = os.path.join(settings['DATA_PATH'], 'layersdata.txt') 
+        # os.makedirs(self.settings['DATA_PATH'], exist_ok=True) 
+        # np.savetxt("layersdata.csv", , fmt="%.2f", delimiter=",")
+        ####################################################################
 
         # Double layers to account for activation functions
         self.n_hidden_layers = 2 * settings['N_HIDDEN_LAYERS']
@@ -75,13 +86,38 @@ class policyEstimator(nn.Module):
                 self.net.cuda()
             self.optimizer = torch.optim.Adam(self.net.parameters(),
                 lr=self.learning_rate)
+            ########################################################
+            self.activations = {}
+            self.register_hooks()
+            # self._register_hooks()
+            ########################################################
+
+
+########################################################
+
+    def hook_fn(self, layer_name):
+        def hook(module, input, output):
+            #print(f"Actor Layer {layer_name} activation: {output}")
+            self.activations[layer_name] = output
+        return hook
+
+    def register_hooks(self):
+        for name, layer in self.net.named_children():
+            if isinstance(layer, nn.Linear) or isinstance(layer, nn.ReLU):
+                layer.register_forward_hook(self.hook_fn(name))
+########################################################
 
     def get_logits(self, state):
         state_t = torch.FloatTensor(state).to(self.device)
         return self.net(state_t)
 
     def predict(self, state):
+        ########################################################
+        #self._log_and_save(state)
+        ########################################################
         logits = self.get_logits(state)
+        #
+        #print('Output actor: ', F.softmax(logits, dim=-1))
         return F.softmax(logits, dim=-1)
 
     def get_action(self, state):
@@ -123,6 +159,7 @@ class valueEstimator(nn.Module):
 
         self.device = check_device_settings(settings)
         self.n_inputs = env.observation_space.shape[0]
+        #print('State critic: ', self.n_inputs)
         
         self.n_outputs = 1
         self.n_hidden_nodes = settings['N_HIDDEN_NODES']
@@ -176,9 +213,30 @@ class valueEstimator(nn.Module):
                 self.net.cuda()
             self.optimizer = torch.optim.Adam(self.net.parameters(),
                 lr=self.learning_rate)
+            ########################################################
+            self.activations = {}
+            self.register_hooks()
+            # self._register_hooks()
+            ########################################################
+
+########################################################
+
+    def hook_fn(self, layer_name):
+        def hook(module, input, output):
+            #print(f"Critic Layer {layer_name} activation: {output}")
+            self.activations[layer_name] = output
+        return hook
+
+    def register_hooks(self):
+        for name, layer in self.net.named_children():
+            if isinstance(layer, nn.Linear) or isinstance(layer, nn.ReLU):
+                layer.register_forward_hook(self.hook_fn(name))
+########################################################
+
 
     def predict(self, state):
         state_t = torch.FloatTensor(state).to(self.device)
+        #print('Output critic: ', state_t)
         return self.net(state_t)
 
     def calc_loss(self, states, returns):
