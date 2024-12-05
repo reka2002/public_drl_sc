@@ -72,10 +72,10 @@ config = {
    'N_HIDDEN_NODES': 3,
    'N_HIDDEN_LAYERS': 1,
    'N_PRODUCTS': 2,
-    'N_EPISODES': 1000,
+    'N_EPISODES': 1,
    'RANDOM_SEED': 1733183865,
    'STATE_SETTING': 'INVENTORY',
-    'BATCH_SIZE': 100,
+  #  'BATCH_SIZE': 100,
   #  'GRADIENT_CLIPPING': False
 
 
