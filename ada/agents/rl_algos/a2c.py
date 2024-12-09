@@ -136,7 +136,7 @@ class a2c():
                     #print('Planning data train: ', planning_data)
 
                 if self.value_est is not None:
-                    print('ep: ', ep, 'value', self.value_log)
+                   # print('ep: ', ep, 'value', self.value_log)
                     self.value_log.append(estimate_schedule_value(self.env, 
                         self.value_est, self.schedule))
                 

@@ -24,7 +24,7 @@ class policyEstimator(nn.Module):
 
         self.device = check_device_settings(settings)
         self.n_inputs = env.observation_space.shape[0]
-        print('State actor: ',  env.observation_space)
+       # print('State actor: ',  env.observation_space)
         try:
             self.n_outputs = env.action_space.n 
         except AttributeError:
@@ -38,7 +38,11 @@ class policyEstimator(nn.Module):
         else:
             self.learning_rate = settings['ACTOR_LR']
         self.grad_clip = settings['GRADIENT_CLIPPING']
-        self.clip = 0.1
+        ####################################################################
+        # change the value of norm
+        self.clip = 0.5
+        #self.clip = 0.1
+        ####################################################################
         self.bias = settings['BIAS']
         self.beta = settings['BETA']
         self.action_space = np.arange(self.n_outputs)
@@ -97,7 +101,7 @@ class policyEstimator(nn.Module):
 
     def hook_fn(self, layer_name):
         def hook(module, input, output):
-            print(f"Actor Layer {layer_name} activation: {output}")
+            #print(f"Actor Layer {layer_name} activation: {output}")
             self.activations[layer_name] = output
         return hook
 
@@ -117,7 +121,7 @@ class policyEstimator(nn.Module):
         ########################################################
         logits = self.get_logits(state)
         #
-        print('Output actor: ', F.softmax(logits, dim=-1))
+        #print('Output actor: ', F.softmax(logits, dim=-1))
         return F.softmax(logits, dim=-1)
 
     def get_action(self, state):
@@ -159,7 +163,7 @@ class valueEstimator(nn.Module):
 
         self.device = check_device_settings(settings)
         self.n_inputs = env.observation_space.shape[0]
-        print('State critic: ', self.n_inputs)
+        #print('State critic: ', self.n_inputs)
         
         self.n_outputs = 1
         self.n_hidden_nodes = settings['N_HIDDEN_NODES']
@@ -171,7 +175,11 @@ class valueEstimator(nn.Module):
         else:
             self.learning_rate = settings['CRITIC_LR']
         self.grad_clip = settings['GRADIENT_CLIPPING']
-        self.clip = 0.1
+        ####################################################################
+        # change the value of norm
+        self.clip = 0.5
+        #self.clip = 0.1
+        ####################################################################
         self.bias = settings['BIAS']
         self.beta = settings['BETA']
         self.action_space = np.arange(self.n_outputs)
@@ -223,7 +231,7 @@ class valueEstimator(nn.Module):
 
     def hook_fn(self, layer_name):
         def hook(module, input, output):
-            print(f"Critic Layer {layer_name} activation: {output}")
+           # print(f"Critic Layer {layer_name} activation: {output}")
             self.activations[layer_name] = output
         return hook
 
@@ -236,7 +244,7 @@ class valueEstimator(nn.Module):
 
     def predict(self, state):
         state_t = torch.FloatTensor(state).to(self.device)
-        print('Output critic: ', state_t)
+        #print('Output critic: ', state_t)
         return self.net(state_t)
 
     def calc_loss(self, states, returns):

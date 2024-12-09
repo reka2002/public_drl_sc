@@ -29,7 +29,8 @@ config = {
     'ENVIRONMENT': 'TARTAN',
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
-    'END_TIME': '2018-01-05',
+   # 'END_TIME': '2018-01-05', # for simplifed example
+    'END_TIME': '2018-01-31',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
@@ -69,14 +70,14 @@ config = {
    # 'N_HIDDEN_LAYERS': 1,
 
  # Configuration values for simplified example 
-   'N_HIDDEN_NODES': 3,
-   'N_HIDDEN_LAYERS': 1,
-   'N_PRODUCTS': 2,
-    'N_EPISODES': 1,
+   'N_HIDDEN_NODES': 550,
+   'N_HIDDEN_LAYERS': 12,
+   'N_PRODUCTS': 4,
+    'N_EPISODES': 50000,
    'RANDOM_SEED': 1733183865,
    'STATE_SETTING': 'INVENTORY',
   #  'BATCH_SIZE': 100,
-  #  'GRADIENT_CLIPPING': False
+  # 'GRADIENT_CLIPPING': True
 
 
     
