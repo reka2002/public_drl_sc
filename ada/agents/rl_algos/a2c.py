@@ -34,7 +34,7 @@ class a2c():
         self.kl_div = []
 
         ############################
-            # ADD
+        # ADD
         self.episode_rewards=[]
         ############################
     def check_a2c_settings(self, settings):
