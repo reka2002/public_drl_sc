@@ -112,7 +112,7 @@ class schedulingMPC():
                     # self.solved_models.append(self.m_solved)
                 self.model_results.append(self.results)
                 self.solved_models.append(self.m_solved)
-            self.generate_gifs()
+#            self.generate_gifs()
            
         print(self.schedule)
         print("Results: ", self.model_results)
@@ -154,27 +154,27 @@ class schedulingMPC():
         np.savetxt("schedule_file_SIMP_MPC.csv", self.schedule, fmt="%.2f", delimiter=",")
     ###################################################################
     
-    def generate_gifs(self):
-        #plots = ['gantt', 'inventory', 'sales', 'shipment']
-        plots = ['gantt']
-        for model, time in zip(self.solved_models, self.time_stamps):
-            self.plot_gantt(model, time, save=True)
-            self.plot_inventory(model, time, save=True)
-            self.plot_sales(model, time, save=True)
-            self.plot_shipments(model, time, save=True)
+    # def generate_gifs(self):
+    #     #plots = ['gantt', 'inventory', 'sales', 'shipment']
+    #     plots = ['gantt']
+    #     for model, time in zip(self.solved_models, self.time_stamps):
+    #         self.plot_gantt(model, time, save=True)
+    #         self.plot_inventory(model, time, save=True)
+    #         self.plot_sales(model, time, save=True)
+    #         self.plot_shipments(model, time, save=True)
 
-            # Build GIF at last time step
-            if time == self.env.n_steps - 1:
-                for plot_type in plots:
-                    files = [self.settings['DATA_PATH'] + 
-                        '/MIP_{:s}_{:d}.png'.format(plot_type, x) 
-                        for x in range(1, self.episodes + 1)]
-                    images = []
-                    for file in files:
-                        images.append(imageio.imread(file))
-                    imageio.mimsave(self.settings['DATA_PATH'] + \
-                        '/{:s}_animation.gif'.format(plot_type),
-                        images, duration=0.7)
+    #         # Build GIF at last time step
+    #         if time == self.env.n_steps - 1:
+    #             for plot_type in plots:
+    #                 files = [self.settings['DATA_PATH'] + 
+    #                     '/MIP_{:s}_{:d}.png'.format(plot_type, x) 
+    #                     for x in range(1, self.episodes + 1)]
+    #                 images = []
+    #                 for file in files:
+    #                     images.append(imageio.imread(file))
+    #                 imageio.mimsave(self.settings['DATA_PATH'] + \
+    #                     '/{:s}_animation.gif'.format(plot_type),
+    #                     images, duration=0.7)
             
     def plot_gantt(self, model, time_step=None, color_scheme=None, save=False):
         if self.m_solved is None:

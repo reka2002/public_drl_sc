@@ -24,13 +24,13 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
-  'AGENT_CLASS': 'RL',
- #  'AGENT_CLASS': 'MIP',
+ # 'AGENT_CLASS': 'RL',
+   'AGENT_CLASS': 'MIP',
     'ENVIRONMENT': 'TARTAN',
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
-   # 'END_TIME': '2018-01-05', # for simplifed example
-    'END_TIME': '2018-01-31',
+    'END_TIME': '2018-01-5', # for simplifed example
+   # 'END_TIME': '2018-01-31',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
