@@ -24,12 +24,12 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
- # 'AGENT_CLASS': 'RL',
-   'AGENT_CLASS': 'MIP',
+  'AGENT_CLASS': 'RL',
+  # 'AGENT_CLASS': 'MIP',
     'ENVIRONMENT': 'TARTAN',
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
-    'END_TIME': '2018-01-5', # for simplifed example
+    'END_TIME': '2018-01-15', # for simplifed example
    # 'END_TIME': '2018-01-31',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
@@ -70,14 +70,21 @@ config = {
    # 'N_HIDDEN_LAYERS': 1,
 
  # Configuration values for simplified example 
-   'N_HIDDEN_NODES': 550,
-   'N_HIDDEN_LAYERS': 12,
-   'N_PRODUCTS': 4,
-    'N_EPISODES': 50000,
-   'RANDOM_SEED': 1733183865,
-   'STATE_SETTING': 'INVENTORY',
+#    'N_HIDDEN_NODES': 550,
+#    'N_HIDDEN_LAYERS': 12,
+#    'N_PRODUCTS': 4,
+#     'N_EPISODES': 50000,
+#    'RANDOM_SEED': 1733183865,
+#    'STATE_SETTING': 'INVENTORY',
   #  'BATCH_SIZE': 100,
   # 'GRADIENT_CLIPPING': True
+     'N_HIDDEN_NODES': 3,
+   'N_HIDDEN_LAYERS': 1,
+   'N_PRODUCTS': 3,
+   'N_EPISODES': 10000,
+   'RANDOM_SEED': 1733183865,
+   'STATE_SETTING': 'INVENTORY',
+   'BATCH_SIZE': 100,
 
 
     

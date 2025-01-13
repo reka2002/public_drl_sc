@@ -432,8 +432,8 @@ class a2c():
     def generate_schedule(self):
         # self.policy_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/actor.pt'))
         # self.value_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/critic.pt'))
-        self.policy_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/actor_training.pt'))
-        self.value_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/critic_training.pt'))
+        self.policy_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/actor.pt'))
+        self.value_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/critic.pt'))
 
         
         start_time = time.time()
