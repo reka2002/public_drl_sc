@@ -81,6 +81,7 @@ class containers(object):
   # Reward function
   def reward_function(self):
     if 'OTD' in self.reward_function:
+     # print('obj', self.containers.total_reward)
       return get_OTD_reward(self)
     elif 'VALUE' in self.reward_function:
       return get_fin_reward(self)
