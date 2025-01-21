@@ -84,6 +84,7 @@ class containers(object):
      # print('obj', self.containers.total_reward)
       return get_OTD_reward(self)
     elif 'VALUE' in self.reward_function:
+      #print('obj', self.containers.total_reward)
       return get_fin_reward(self)
     else:
       # Add other reward functions and their classifications...
@@ -96,6 +97,10 @@ def get_fin_reward(env):
     inventory_cost = np.sum(env.containers.inventory_cost[-1])
     shipment_rewards = np.sum(env.containers.shipment_rewards[-1])
     reward = late_penalties + inventory_cost + shipment_rewards
+    print("reward", reward)
+    print("inventory cost", inventory_cost)
+    print("late_penalties", late_penalties)
+    print("shipment rewards", shipment_rewards)
   else:
     raise NotImplementedError('{} is not implemented'.format(env.reward_function))
 

@@ -78,8 +78,8 @@ config = {
 #    'STATE_SETTING': 'INVENTORY',
   #  'BATCH_SIZE': 100,
   # 'GRADIENT_CLIPPING': True
-     'N_HIDDEN_NODES': 12,
-   'N_HIDDEN_LAYERS': 10,
+     'N_HIDDEN_NODES': 3,
+   'N_HIDDEN_LAYERS': 1,
    'N_PRODUCTS': 4,
    'N_EPISODES': 10000,
    'RANDOM_SEED': 1733183865,
@@ -88,7 +88,8 @@ config = {
 
     'ACTOR_LR': 0.01,
     # value function - fastest timescale
-    'CRITIC_LR': 0.01 ,
+    'CRITIC_LR': 0.1 ,
+    'REWARD_FUNCTION': 'VALUE_ADD',
 
 
     
