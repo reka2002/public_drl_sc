@@ -156,8 +156,8 @@ class a2c():
             self.log_episode_data(_planning_data, ep)
 
             # Kill if stuck producing one product
-            if len(np.unique(self.env.containers.actions)) == 1:
-                break
+            # if len(np.unique(self.env.containers.actions)) == 1:
+            #     break
 
             # UPDATE NETWORKS
             # =============================================================== 
