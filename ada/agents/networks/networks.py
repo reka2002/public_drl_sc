@@ -83,7 +83,7 @@ class policyEstimator(nn.Module):
                     bias=self.bias)
             # Odd layers are activation functions
             else:
-                self.layers[str(i)] = nn.ReLU()
+                self.layers[str(i)] = nn.GELU()
 
             self.net = nn.Sequential(self.layers)
             if self.device == 'cuda':
@@ -107,7 +107,7 @@ class policyEstimator(nn.Module):
 
     def register_hooks(self):
         for name, layer in self.net.named_children():
-            if isinstance(layer, nn.Linear) or isinstance(layer, nn.ReLU):
+            if isinstance(layer, nn.Linear) or isinstance(layer, nn.GELU):
                 layer.register_forward_hook(self.hook_fn(name))
 ########################################################
 
@@ -214,7 +214,7 @@ class valueEstimator(nn.Module):
                     bias=self.bias)
             # Odd layers are activation functions
             else:
-                self.layers[str(i)] = nn.ReLU()
+                self.layers[str(i)] = nn.GELU()
 
             self.net = nn.Sequential(self.layers)
             if self.device == 'cuda':
@@ -237,7 +237,7 @@ class valueEstimator(nn.Module):
 
     def register_hooks(self):
         for name, layer in self.net.named_children():
-            if isinstance(layer, nn.Linear) or isinstance(layer, nn.ReLU):
+            if isinstance(layer, nn.Linear) or isinstance(layer, nn.GELU):
                 layer.register_forward_hook(self.hook_fn(name))
 ########################################################
 

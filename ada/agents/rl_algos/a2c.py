@@ -410,6 +410,21 @@ class a2c():
             file.close()
 
     
+    # def log_episode_rewards(self, file_name='episode_rewards.csv'):
+       
+    #     path = Path(self.settings['DATA_PATH'])
+    #     path.mkdir(parents=True, exist_ok=True)
+    #     file_path = os.path.join(self.settings['DATA_PATH'], file_name)
+
+
+    #     with open(file_path, 'a') as f:
+
+    #         if os.stat(file_path).st_size == 0:
+    #             f.write("episode,total_reward\n")
+
+    #         latest_episode = len(self.episode_rewards)
+    #         f.write(f"{latest_episode}{self.episode_rewards}\n")
+
     def log_episode_rewards(self, file_name='episode_rewards.csv'):
        
         path = Path(self.settings['DATA_PATH'])
@@ -419,11 +434,13 @@ class a2c():
 
         with open(file_path, 'a') as f:
 
-            if os.stat(file_path).st_size == 0:
-                f.write("episode,total_reward\n")
+            # if os.stat(file_path).st_size == 0:
+            #     f.write("episode,total_reward\n")
 
             latest_episode = len(self.episode_rewards)
-            f.write(f"{latest_episode}{self.episode_rewards}\n")
+            total_reward = self.episode_rewards[-1] if self.episode_rewards else 0  # Ensure a reward exists
+
+            f.write(f"{total_reward}\n")
 
 
     ###############################################################################
@@ -443,6 +460,11 @@ class a2c():
         #print(f"Inference time: {inference_time:.4f} seconds")
         #print("Generated Schedule:", self.schedule)
         # print("Total Reward for the Generated Schedule:", total_reward)
+        reward_sum = self.env.containers.get_total_reward_sum()
+        num_days = self.env.n_days if self.env.n_days > 0 else 1  # Avoid division by zero
+        average_rl_profit_per_day = reward_sum / num_days
+        print("\n RL Total Profit over {} days: {:.2f}".format(num_days, reward_sum))
+        print("\n RL Average Profit per Day: {:.2f}".format(average_rl_profit_per_day))
         self.save_schedule_RL()
 
         return self.schedule
