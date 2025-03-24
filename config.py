@@ -29,7 +29,7 @@ config = {
     'ENVIRONMENT': 'TARTAN',
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
-    'END_TIME': '2018-01-31', # for simplifed example
+    'END_TIME': '2018-03-31', # for simplifed example
    # 'END_TIME': '2018-01-31',
     'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
@@ -78,20 +78,22 @@ config = {
 #    'STATE_SETTING': 'INVENTORY',
   #  'BATCH_SIZE': 100,
   # 'GRADIENT_CLIPPING': True
-    'N_HIDDEN_NODES': 3,
-   'N_HIDDEN_LAYERS': 1,
+    'N_HIDDEN_NODES':512,
+   'N_HIDDEN_LAYERS': 12,
    'N_PRODUCTS': 4,
-   'N_EPISODES': 5000,
+   'N_EPISODES': 50000,
    'RANDOM_SEED': 1733183865,
    'STATE_SETTING': 'INVENTORY',
-   'BATCH_SIZE': 100,
+   'BATCH_SIZE': 128,
 
     # Policy function - intermediate timescale
 
     # Value function - fastest timescale
-    'GAMMA':0.99,
-    'ACTOR_LR': 0.01,
-   'CRITIC_LR': 0.1,
+    'GAMMA':0.95,
+    'ACTOR_LR': 5E-6,
+   'CRITIC_LR': 1E-4,
+   'BETA': 1E-4,
+   'LOAD_LEVEL': 1, 
   
 
 

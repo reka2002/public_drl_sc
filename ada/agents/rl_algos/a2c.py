@@ -36,6 +36,8 @@ class a2c():
         ############################
         # ADD
         self.episode_rewards=[]
+        self.episode_demand = []
+        self.episode_supply = []
         ############################
     def check_a2c_settings(self, settings):
         # Add a2c specific settings here
@@ -149,10 +151,24 @@ class a2c():
                 if self.env.sim_time >= self.env.n_steps:
                     break
 
-            ############################
+            ####################################################################################
+
+            # Get total demand from order book
+            total_demand = np.sum(self.env.order_book[:, self.env.ob_indices['order_qty']])
+
+            # Get total supply (actual production)
+            actual_productions = np.array(self.env.containers.actual_production)
+            total_supply = np.sum(actual_productions)
+
+            # Store them
+            self.episode_demand.append(total_demand)
+            self.episode_supply.append(total_supply)
+
+            self.log_demand_supply()
+
             self.episode_rewards.append(episode_reward)
             self.log_episode_rewards()
-            ############################
+            ####################################################################################
             self.log_episode_data(_planning_data, ep)
 
             # Kill if stuck producing one product
@@ -437,10 +453,21 @@ class a2c():
             # if os.stat(file_path).st_size == 0:
             #     f.write("episode,total_reward\n")
 
-            latest_episode = len(self.episode_rewards)
-            total_reward = self.episode_rewards[-1] if self.episode_rewards else 0  # Ensure a reward exists
+           
+            # Ensure a reward exists
+            total_reward = self.episode_rewards[-1] if self.episode_rewards else 0  
 
             f.write(f"{total_reward}\n")
+            
+    def log_demand_supply(self, file_name='demand_supply.csv'):
+        path = Path(self.settings['DATA_PATH'])
+        path.mkdir(parents=True, exist_ok=True)
+        file_path = os.path.join(self.settings['DATA_PATH'], file_name)
+
+        with open(file_path, 'w') as f:
+            f.write("episode,total_demand,total_supply\n")
+            for i, (d, s) in enumerate(zip(self.episode_demand, self.episode_supply)):
+                f.write(f"{i+1},{d},{s}\n")
 
 
     ###############################################################################
