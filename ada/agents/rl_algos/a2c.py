@@ -152,18 +152,14 @@ class a2c():
                     break
 
             ####################################################################################
-
             # Get total demand from order book
             total_demand = np.sum(self.env.order_book[:, self.env.ob_indices['order_qty']])
-
             # Get total supply (actual production)
             actual_productions = np.array(self.env.containers.actual_production)
             total_supply = np.sum(actual_productions)
 
-            # Store them
             self.episode_demand.append(total_demand)
             self.episode_supply.append(total_supply)
-
             self.log_demand_supply()
 
             self.episode_rewards.append(episode_reward)
@@ -465,9 +461,9 @@ class a2c():
         file_path = os.path.join(self.settings['DATA_PATH'], file_name)
 
         with open(file_path, 'w') as f:
-            f.write("episode,total_demand,total_supply\n")
+            #f.write("episode,total_demand,total_supply\n")
             for i, (d, s) in enumerate(zip(self.episode_demand, self.episode_supply)):
-                f.write(f"{i+1},{d},{s}\n")
+                f.write(f"{d},{s}\n")
 
 
     ###############################################################################
