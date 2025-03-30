@@ -59,6 +59,93 @@ def get_default_seasonal_demand_settings(settings):
 
     return settings
 
+def generate_seasonal_demand(day, product_id):
+    base = 200
+    amplitude = 40 + 10 * product_id  # product-specific amplitude
+    noise = np.random.normal(0, 10)
+    seasonal = amplitude * np.sin(2 * np.pi * day / 365)  # yearly cycle
+    return max(base + seasonal + noise, 0)
+
+# def generate_seasonal_orders(env):
+#     if env.order_statistics is None:
+#         start_day = (env.start_time - datetime.datetime(env.start_time.year, 1, 1)).days
+#         total_days = env.n_days
+#         total_products = env.n_products
+#         day_range = np.arange(total_days)
+
+#         # Generate raw demand values
+#         demand_matrix = np.zeros((total_days, total_products))
+#         for d in day_range:
+#             for pid in range(total_products):
+#                 demand_matrix[d, pid] = generate_seasonal_demand(d + start_day, pid)
+
+#         # Scale to desired yearly demand volume
+#         avg_daily_prod = env.product_data[:, env.product_data_cols.index('min_run_time')].astype(float).mean() \
+#                          * env.product_data[:, env.product_data_cols.index('run_rate')].astype(float).mean()
+#         loadlevel =1 
+#       #  yearly_demand_volume = env.settings['LOAD_LEVEL'] * avg_daily_prod * total_days
+#         yearly_demand_volume = loadlevel* avg_daily_prod * total_days
+
+#         total_demand_generated = demand_matrix.sum()
+#         scaling_factor = yearly_demand_volume / total_demand_generated
+#         demand_matrix *= scaling_factor
+
+#         # Monthly order allocation
+#         monthly_orders = []
+#         shipping_days_by_month = env.shipping_dict
+#         for month in sorted(shipping_days_by_month):
+#             ship_days = shipping_days_by_month[month]
+#             month_orders = []
+
+#             for day in ship_days:
+#                 sim_day = env.date_to_day.get((month, day), None)
+#                 if sim_day is None or sim_day >= total_days:
+#                     continue
+#                 daily_demand = demand_matrix[sim_day]
+
+#                 for pid in range(total_products):
+#                     qty = daily_demand[pid]
+#                     if qty < 1:
+#                         continue
+
+#                     n_orders = int(np.ceil(qty / env.settings['ORDER_SIZE']))
+#                     for _ in range(n_orders):
+#                         planned_gi_date = sim_day
+#                         lead_time = int(np.clip(np.random.normal(
+#                             env.settings['MEAN_LEAD_TIME'],
+#                             env.settings['STD_LEAD_TIME']), 1, 30))
+
+#                         doc_create_date = planned_gi_date - lead_time
+#                         vs_margin = int(np.clip(np.random.normal(
+#                             env.settings['VAR_STD_MARGIN_MEAN'],
+#                             env.settings['VAR_STD_MARGIN_STD']), 10, 100))
+
+#                         order = [0,  # doc_num (will be filled later)
+#                                  doc_create_date,
+#                                  planned_gi_date,
+#                                  month,
+#                                  env.gmids[pid],
+#                                  env.gmids[pid],  # zemid/zfin
+#                                  env.settings['ORDER_SIZE'],
+#                                  vs_margin]
+#                         month_orders.append(order)
+#             monthly_orders.append(month_orders)
+
+#         # Assign doc numbers and build order book
+#         all_orders = [order for month in monthly_orders for order in month]
+#         for i, order in enumerate(all_orders):
+#             order[0] = i + 1  # doc_num
+
+#         # Add columns for shipping metadata
+#         order_book = np.array(all_orders, dtype=int)
+#         extra = np.zeros((order_book.shape[0], 5), dtype=int)
+#         order_book = np.hstack([order_book, extra])
+#         order_book[:, env.ob_indices['cust_segment']] = 1  # set segment = 1
+
+#         env.order_statistics = True  # prevent regeneration
+#         env.order_book = order_book
+#         return order_book
+
 def generate_seasonal_orders(env):
 
     # Stochastically generate order book
@@ -72,14 +159,23 @@ def generate_seasonal_orders(env):
             :,env.product_data_cols.index('run_rate')].astype(float).mean()
         # Average yearly production
         avg_yearly_prod = avg_daily_prod * env.n_days
+        print('avg_yearly_prod', avg_yearly_prod)
         # Adjust to order load level to account for higher demand years or lower
-        yearly_demand_volume = env.settings['LOAD_LEVEL'] * avg_yearly_prod
+       
+        loadlevel =0.6
+        print( loadlevel)
+      #  yearly_demand_volume = env.settings['LOAD_LEVEL'] * avg_yearly_prod
+        yearly_demand_volume = loadlevel * avg_yearly_prod
+        print('yearly_demand_volume', yearly_demand_volume)
         # Generate volume shares for each product using softmax
         # on standard normal draws
         x = np.random.standard_normal(env.n_products)
+        print('x', x)
         prod_volume_shares = softmax(x)
+        print('prod_volume_shares', prod_volume_shares)
         # Add some seasonality to each product
         seasonality_offset = np.random.standard_normal(1)
+        print('seasonality_offset', seasonality_offset)
         # Take absolute value to ensure that products follow a similar 
         # demand pattern
         amplitude = np.abs(np.random.standard_normal(env.n_products))
@@ -99,6 +195,8 @@ def generate_seasonal_orders(env):
         # Generate orders for each month
         num_orders_per_month = np.round(total_monthly_demand / 
             env.settings['ORDER_SIZE'], 0).astype(int)
+        print('num_orders_per_month', num_orders_per_month)
+        
 
         env.order_statistics = [monthly_product_prob, num_orders_per_month]
 
@@ -205,7 +303,13 @@ def generate_seasonal_orders(env):
                                          replace=True,
                                          p=env.order_statistics[0][i])
             # Get order quantities
-            order_qtys = np.repeat(env.settings['ORDER_SIZE'], n_orders)
+            ########################################################################
+           # order_qtys = np.repeat(env.settings['ORDER_SIZE'], n_orders)
+            order_qtys = np.array([
+                max(0, generate_seasonal_demand(doc_create_dates[i], mat_codes[i]))
+                for i in range(n_orders)
+            ]).round().astype(int)
+            ########################################################################
 
             # Combine values
             gen_orders = np.vstack([doc_nums, doc_create_dates, 

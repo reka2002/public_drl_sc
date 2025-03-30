@@ -81,7 +81,7 @@ config = {
     'N_HIDDEN_NODES':512,
    'N_HIDDEN_LAYERS': 12,
    'N_PRODUCTS': 4,
-   'N_EPISODES': 50000,
+   'N_EPISODES': 20000,
    'RANDOM_SEED': 1733183865,
    'STATE_SETTING': 'INVENTORY',
    'BATCH_SIZE': 128,
@@ -93,7 +93,7 @@ config = {
     'ACTOR_LR': 5E-6,
    'CRITIC_LR': 1E-4,
    'BETA': 1E-4,
-   'LOAD_LEVEL': 1, 
+   'LOAD_LEVEL':1, 
   
 
 

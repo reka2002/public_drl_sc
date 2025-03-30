@@ -37,7 +37,7 @@ class a2c():
         # ADD
         self.episode_rewards=[]
         self.episode_demand = []
-        self.episode_supply = []
+        self.episode_supply =[]
         ############################
     def check_a2c_settings(self, settings):
         # Add a2c specific settings here
@@ -158,6 +158,7 @@ class a2c():
             actual_productions = np.array(self.env.containers.actual_production)
             total_supply = np.sum(actual_productions)
 
+            # supply and demand will be the total supply and demand for n_days (if running for 95 days it will be the sum of supply over 95 days per training episode)
             self.episode_demand.append(total_demand)
             self.episode_supply.append(total_supply)
             self.log_demand_supply()
