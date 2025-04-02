@@ -146,9 +146,6 @@ def get_OTD_reward(env):
 
     return reward
 
-# #####################################################################################################
-
-
 #old rewards.py, use for training
 
 

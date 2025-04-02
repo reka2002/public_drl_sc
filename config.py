@@ -78,7 +78,7 @@ config = {
 #    'STATE_SETTING': 'INVENTORY',
   #  'BATCH_SIZE': 100,
   # 'GRADIENT_CLIPPING': True
-    'N_HIDDEN_NODES':512,
+    'N_HIDDEN_NODES':128,
    'N_HIDDEN_LAYERS': 12,
    'N_PRODUCTS': 4,
    'N_EPISODES': 20000,
@@ -89,12 +89,17 @@ config = {
     # Policy function - intermediate timescale
 
     # Value function - fastest timescale
-    'GAMMA':0.95,
-    'ACTOR_LR': 5E-6,
-   'CRITIC_LR': 1E-4,
+#     'GAMMA':0.95,
+#     'ACTOR_LR': 5E-6,
+#    'CRITIC_LR': 1E-4,
+#    'BETA': 1E-4,
+#    'LOAD_LEVEL':1, 
+    'GAMMA':0.99,
+    'ACTOR_LR': 0.01,
+   'CRITIC_LR': 1E-5,
    'BETA': 1E-4,
    'LOAD_LEVEL':1, 
-  
+   
 
 
     # 'ACTOR_LR': 0.01,
