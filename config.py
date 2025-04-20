@@ -31,7 +31,7 @@ config = {
    # 'END_FILE': '2018-01-02',
     'END_TIME': '2018-03-31', # for simplifed example
    # 'END_TIME': '2018-01-31',
-    'REWARD_FUNCTION': 'OTD1',
+  #  'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
 
@@ -78,10 +78,10 @@ config = {
 #    'STATE_SETTING': 'INVENTORY',
   #  'BATCH_SIZE': 100,
   # 'GRADIENT_CLIPPING': True
-    'N_HIDDEN_NODES':128,
+    'N_HIDDEN_NODES':64,
    'N_HIDDEN_LAYERS': 12,
    'N_PRODUCTS': 4,
-   'N_EPISODES': 20000,
+   'N_EPISODES': 10000,
    'RANDOM_SEED': 1733183865,
    'STATE_SETTING': 'INVENTORY',
    'BATCH_SIZE': 128,
@@ -94,10 +94,17 @@ config = {
 #    'CRITIC_LR': 1E-4,
 #    'BETA': 1E-4,
 #    'LOAD_LEVEL':1, 
-    'GAMMA':0.99,
-    'ACTOR_LR': 0.01,
+
+
+ 'GAMMA': 0.99,
+   'ACTOR_LR': 0.01,
    'CRITIC_LR': 1E-5,
-   'BETA': 1E-4,
+ #  'BETA': 1E-4,
+#     'GAMMA': 0.95851,
+#     'ACTOR_LR': 0.1,
+#    'CRITIC_LR': 0.00218,
+    'BETA': 1E-4,
+
    'LOAD_LEVEL':1, 
    
 

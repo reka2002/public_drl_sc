@@ -66,6 +66,7 @@ def generate_seasonal_orders(env):
     # Check to see if order statistics already exist, if not
     # generate them
     if env.order_statistics is None:
+        print("order statistic is none")
         # Average daily production
         avg_daily_prod = env.product_data[
             :,env.product_data_cols.index('min_run_time')].astype(float).mean() * env.product_data[
@@ -226,5 +227,7 @@ def generate_seasonal_orders(env):
     generated_orders[:, env.ob_indices['cust_segment']] = 1
     # Delete first placeholder value
     generated_orders = np.delete(generated_orders, 0, 0)
+
+    #print(generated_orders)
 
     return generated_orders

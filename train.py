@@ -21,6 +21,7 @@ def main(argv):
 	#agent = set_up_sim(args, default_path=default_path)
 	# TODO: Train agent and log results
 
+	#agent.optimize_hyperparameters()
 	agent.train()
 
 if __name__ == "__main__":

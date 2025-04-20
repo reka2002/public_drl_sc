@@ -15,6 +15,10 @@ from ..networks.networks import policyEstimator, valueEstimator
 from ...scheduler.network_scheduler import network_scheduler, estimate_schedule_value
 from ...environments.env_utils import get_planning_data_headers, plot_gantt, get_current_state
 
+from skopt import gp_minimize
+from skopt.space import Real, Integer
+from skopt.utils import use_named_args
+
 # Define a2c class
 class a2c():
 
@@ -42,6 +46,53 @@ class a2c():
     def check_a2c_settings(self, settings):
         # Add a2c specific settings here
         return settings
+    
+    ##################################################################
+    def optimize_hyperparameters(self, n_calls=20):
+        # Define the search space for hyperparameters
+        space = [
+            Real(0.8, 0.999, name='gamma'),
+            Integer(32, 512, name='hidden_nodes'),
+            Real(1e-5, 1e-2, name='actor_lr', prior='log-uniform'),
+            Real(1e-5, 1e-2, name='critic_lr', prior='log-uniform')
+        ]
+
+        @use_named_args(space)
+        def objective(**params):
+            """
+            Objective function to evaluate the performance of the A2C algorithm
+            with a given set of hyperparameters.
+            """
+            # Update settings with the current set of hyperparameters
+            self.settings['GAMMA'] = params['gamma']
+            self.settings['N_HIDDEN_NODES'] = params['hidden_nodes']
+            self.settings['ACTOR_LR'] = params['actor_lr']
+            self.settings['CRITIC_LR'] = params['critic_lr']
+
+            # Train the model and return the negative of the mean reward
+            self.train()
+            return -np.mean(self.training_rewards[-100:])  # Use negative for minimization
+
+        # Perform Bayesian Optimization
+        res_gp = gp_minimize(
+            func=objective,
+            dimensions=space,
+            n_calls=n_calls,
+            random_state=42
+        )
+
+        # Extract and apply the best parameters
+        best_params = res_gp.x
+        self.settings['GAMMA'] = best_params[0]
+        self.settings['ACTOR_LR'] = best_params[1]
+        self.settings['CRITIC_LR'] = best_params[2]
+
+        print("Hyperparameters Found:")
+        print(f"Gamma: {best_params[0]:.5f}")
+        print(f"Actor Learning Rate: {best_params[1]:.5f}")
+        print(f"Critic Learning Rate: {best_params[2]:.5f}")
+
+###################################################################################
 
     def test(self, checkpoint, n_tests=10):
         path = Path('scenarios')
@@ -470,9 +521,10 @@ class a2c():
     ###############################################################################
     # Not in original
     # Add function to generate schedule from trained network
-    def generate_schedule(self):
+    def generate_schedule(self, env):
         # self.policy_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/actor.pt'))
         # self.value_est.net.load_state_dict(torch.load(self.settings['DATA_PATH'] + '/critic.pt'))
+        env.reset()
         self.policy_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/actor.pt'))
         self.value_est.net.load_state_dict(torch.load('C:/Users/Reka/Documents/GitHub/public_drl_sc/Results_plots' + '/critic.pt'))
 

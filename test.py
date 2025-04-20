@@ -17,7 +17,8 @@ def main(argv):
     #agent = set_up_sim(args, default_path=default_path)
     # TODO: Train agent and log results
 
-    agent.generate_schedule()
+   # agent.generate_schedule()
+    agent.generate_schedule(env=productionFacility(config))
 
 if __name__ == "__main__":
 	main(sys.argv)
