@@ -196,7 +196,7 @@ class a2c():
 
                 self.schedule = self.env.step(self.schedule)
                 ############################
-                episode_reward += sum(self.env.containers.total_reward)
+                # episode_reward += sum(self.env.containers.total_reward)
                 ############################
                 self.step += 1
                 if self.env.sim_time >= self.env.n_steps:
@@ -214,6 +214,7 @@ class a2c():
             self.episode_supply.append(total_supply)
             self.log_demand_supply()
 
+            episode_reward = sum(self.env.containers.total_reward)
             self.episode_rewards.append(episode_reward)
             self.log_episode_rewards()
             ####################################################################################

@@ -22,7 +22,10 @@ def main(argv):
 	# TODO: Train agent and log results
 
 	#agent.optimize_hyperparameters()
+	start = datetime.now()
 	agent.train()
+	end = datetime.now()
+	print("Time elapsed:", end - start)
 
 if __name__ == "__main__":
 	main(sys.argv)

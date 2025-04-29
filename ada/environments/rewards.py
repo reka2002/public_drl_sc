@@ -97,7 +97,7 @@ def get_fin_reward(env):
         inventory_cost = np.sum(env.containers.inventory_cost[-1])
         shipment_rewards = np.sum(env.containers.shipment_rewards[-1])
         reward = late_penalties + inventory_cost + shipment_rewards
-        env.containers.total_reward.append(reward)  # Ensure reward is stored
+       # env.containers.total_reward.append(reward)  # Ensure reward is stored
     else:
         raise NotImplementedError('{} is not implemented'.format(env.reward_function))
 
