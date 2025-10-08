@@ -26,11 +26,12 @@ h_logger=Loggermixin.get_default_logger()
 config = {
   'AGENT_CLASS': 'RL',
   # 'AGENT_CLASS': 'MIP',
+   'SOLVER': 'GUROBI',
     'ENVIRONMENT': 'TARTAN',
     'START_TIME': '2018-01-01',
    # 'END_FILE': '2018-01-02',
-    'END_TIME': '2018-03-31', # for simplifed example
-   # 'END_TIME': '2018-01-31',
+  #  'END_TIME': '2018-01-11', # for simplifed example
+    'END_TIME': '2018-03-31',
   #  'REWARD_FUNCTION': 'OTD1',
     'GAP': 0.001,
     'TIME_LIMIT': 120,
@@ -82,10 +83,10 @@ config = {
    'N_HIDDEN_LAYERS': 12,
 #    'N_HIDDEN_NODES': 32,
 #    'N_HIDDEN_LAYERS': 7,
-   'N_PRODUCTS': 8,
-   'N_EPISODES': 10000,
+   'N_PRODUCTS': 4,
+   'N_EPISODES': 7000,
    'RANDOM_SEED': 1733183865,
-   'STATE_SETTING': 'INVENTORY',
+  # 'STATE_SETTING': 'INVENTORY',
    'BATCH_SIZE': 128,
 
     # Policy function - intermediate timescale
@@ -115,6 +116,7 @@ config = {
     # # value function - fastest timescale
     # 'CRITIC_LR': 0.1 ,
      'REWARD_FUNCTION': 'VALUE_ADD',
+     'STATE_SETTING':'INV_BALANCE_PRODUCTION',
 
 
     

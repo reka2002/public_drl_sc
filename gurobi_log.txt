@@ -1,0 +1,1010 @@
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:07 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 18502 rows, 36582 columns and 63502 nonzeros
+Model fingerprint: 0xf89fd2ef
+Variable types: 17787 continuous, 18795 integer (18795 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 3e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 17801 rows and 33604 columns
+Presolve time: 0.03s
+Presolved: 701 rows, 2978 columns, 8449 nonzeros
+Variable types: 0 continuous, 2978 integer (2834 binary)
+Found heuristic solution: objective 4700.5277624
+
+Root relaxation: objective 7.012455e+03, 720 iterations, 0.00 seconds (0.01 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 7012.45459    0  376 4700.52776 7012.45459  49.2%     -    0s
+H    0     0                    4871.8715377 7012.45459  43.9%     -    0s
+H    0     0                    4951.9434573 7012.45459  41.6%     -    0s
+H    0     0                    5391.8833756 7012.45459  30.1%     -    0s
+H    0     0                    5651.1885435 6750.49871  19.5%     -    0s
+     0     0 6750.49871    0  298 5651.18854 6750.49871  19.5%     -    0s
+H    0     0                    5718.5999398 6750.33461  18.0%     -    0s
+H    0     0                    5748.6109084 6750.33461  17.4%     -    0s
+H    0     0                    6687.7348465 6750.33461  0.94%     -    0s
+     0     0 6712.54240    0   16 6687.73485 6712.54240  0.37%     -    0s
+     0     0          -    0      6687.73485 6689.09075  0.02%     -    0s
+
+Explored 1 nodes (1428 simplex iterations) in 0.19 seconds (0.25 work units)
+Thread count was 32 (of 32 available processors)
+
+Solution count 10: 6687.73 6687.73 6591.99 ... 4871.87
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 6.687734846493e+03, best bound 6.689090750830e+03, gap 0.0203%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:07 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 17686 rows, 34899 columns and 60592 nonzeros
+Model fingerprint: 0xc4b21173
+Variable types: 16993 continuous, 17906 integer (17906 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 17686 rows and 34899 columns
+Presolve time: 0.06s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.06 seconds (0.08 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 6549.09 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 6.549094321298e+03, best bound 6.549094321298e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:08 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 16637 rows, 32815 columns and 57172 nonzeros
+Model fingerprint: 0x51f994a6
+Variable types: 15966 continuous, 16849 integer (16849 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 16237 rows and 31082 columns
+Presolve time: 0.03s
+Presolved: 400 rows, 1733 columns, 4935 nonzeros
+Variable types: 0 continuous, 1733 integer (1693 binary)
+Found heuristic solution: objective 3464.0239080
+Found heuristic solution: objective 4480.0709131
+Found heuristic solution: objective 6038.5938041
+
+Root relaxation: objective 6.550640e+03, 244 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    6501.0501414 6501.05014  0.00%     -    0s
+
+Explored 1 nodes (336 simplex iterations) in 0.05 seconds (0.07 work units)
+Thread count was 32 (of 32 available processors)
+
+Solution count 4: 6501.05 6038.59 4480.07 3464.02 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 6.501050141393e+03, best bound 6.501050141393e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:09 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 15379 rows, 30331 columns and 53118 nonzeros
+Model fingerprint: 0xb7e7c57f
+Variable types: 14731 continuous, 15600 integer (15600 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 15379 rows and 30331 columns
+Presolve time: 0.03s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.06 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 5985.61 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 5.985605315092e+03, best bound 5.985605315092e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:09 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 14402 rows, 28391 columns and 49914 nonzeros
+Model fingerprint: 0x94ae2fe3
+Variable types: 13776 continuous, 14615 integer (14615 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 14402 rows and 28391 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.06 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 4893.97 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 4.893970237729e+03, best bound 4.893970237729e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:09 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 18857 rows, 36883 columns and 62855 nonzeros
+Model fingerprint: 0x596b6b48
+Variable types: 18229 continuous, 18654 integer (18654 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 18522 rows and 35485 columns
+Presolve time: 0.05s
+Presolved: 335 rows, 1398 columns, 3993 nonzeros
+Variable types: 0 continuous, 1398 integer (1364 binary)
+Found heuristic solution: objective 4609.4929839
+Found heuristic solution: objective 5364.8094374
+Found heuristic solution: objective 5576.4972810
+
+Root relaxation: objective 5.813221e+03, 218 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 5813.22078    0   82 5576.49728 5813.22078  4.25%     -    0s
+H    0     0                    5750.1611128 5813.22078  1.10%     -    0s
+H    0     0                    5753.0130025 5813.22078  1.05%     -    0s
+     0     0          -    0      5753.01300 5757.98187  0.09%     -    0s
+
+Cutting planes:
+  Implied bound: 6
+  MIR: 2
+  Flow cover: 15
+  Relax-and-lift: 14
+
+Explored 1 nodes (288 simplex iterations) in 0.06 seconds (0.08 work units)
+Thread count was 32 (of 32 available processors)
+
+Solution count 5: 5753.01 5750.16 5576.5 ... 4609.49
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 5.753013002518e+03, best bound 5.757981871968e+03, gap 0.0864%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:10 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 17752 rows, 34687 columns and 59269 nonzeros
+Model fingerprint: 0x63b15a62
+Variable types: 17146 continuous, 17541 integer (17541 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 17752 rows and 34687 columns
+Presolve time: 0.05s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.07 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 6655.03 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 6.655025190092e+03, best bound 6.655025190092e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:11 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 16470 rows, 32155 columns and 55156 nonzeros
+Model fingerprint: 0x8705a497
+Variable types: 15887 continuous, 16268 integer (16268 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 16470 rows and 32155 columns
+Presolve time: 0.04s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.05 seconds (0.06 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 6507.71 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 6.507708796447e+03, best bound 6.507708796447e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:11 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 14834 rows, 28951 columns and 49974 nonzeros
+Model fingerprint: 0x7d633e4f
+Variable types: 14276 continuous, 14675 integer (14675 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 14834 rows and 28951 columns
+Presolve time: 0.04s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.04 seconds (0.05 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 5210.55 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 5.210547805403e+03, best bound 5.210547805403e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:11 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 13664 rows, 26643 columns and 46202 nonzeros
+Model fingerprint: 0xcd6c4174
+Variable types: 13129 continuous, 13514 integer (13514 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 13664 rows and 26643 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds (0.04 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 4113.1 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 4.113099045174e+03, best bound 4.113099045174e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:12 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 12727 rows, 24783 columns and 43128 nonzeros
+Model fingerprint: 0xb84e526f
+Variable types: 12214 continuous, 12569 integer (12569 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 12727 rows and 24783 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds (0.04 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 4668.35 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 4.668354482217e+03, best bound 4.668354482217e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:12 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 11645 rows, 22651 columns and 39626 nonzeros
+Model fingerprint: 0x99d475eb
+Variable types: 11155 continuous, 11496 integer (11496 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 11645 rows and 22651 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds (0.04 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 4105.93 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 4.105928618468e+03, best bound 4.105928618468e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:13 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 10611 rows, 20615 columns and 36271 nonzeros
+Model fingerprint: 0x82e9bd55
+Variable types: 10144 continuous, 10471 integer (10471 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 10611 rows and 20615 columns
+Presolve time: 0.03s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.03 seconds (0.03 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 3998.62 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 3.998621371142e+03, best bound 3.998621371142e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:13 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 9625 rows, 18675 columns and 33063 nonzeros
+Model fingerprint: 0x08223bdd
+Variable types: 9181 continuous, 9494 integer (9494 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 9625 rows and 18675 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.03 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 3891.35 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 3.891346576236e+03, best bound 3.891346576236e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:13 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 8534 rows, 16543 columns and 29544 nonzeros
+Model fingerprint: 0x1ad2724c
+Variable types: 8114 continuous, 8429 integer (8429 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 8534 rows and 16543 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.02 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2733.83 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.733830008096e+03, best bound 2.733830008096e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:13 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 5622 rows, 11003 columns and 20714 nonzeros
+Model fingerprint: 0xe1282e7f
+Variable types: 5239 continuous, 5764 integer (5764 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 5622 rows and 11003 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds (0.02 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 3091.13 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 3.091127695380e+03, best bound 3.091127695380e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:14 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 5037 rows, 9847 columns and 18714 nonzeros
+Model fingerprint: 0xab77ead9
+Variable types: 4676 continuous, 5171 integer (5171 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 5037 rows and 9847 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds (0.01 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 3022.84 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 3.022837171128e+03, best bound 3.022837171128e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:14 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 4355 rows, 8515 columns and 16429 nonzeros
+Model fingerprint: 0xd0b88f52
+Variable types: 4017 continuous, 4498 integer (4498 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 4355 rows and 8515 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds (0.01 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2437.27 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.437274903420e+03, best bound 2.437274903420e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:14 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 3842 rows, 7503 columns and 14649 nonzeros
+Model fingerprint: 0x89a81fa5
+Variable types: 3526 continuous, 3977 integer (3977 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 3842 rows and 7503 columns
+Presolve time: 0.01s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds (0.01 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2810.48 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.810476624469e+03, best bound 2.810476624469e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:14 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 3361 rows, 6555 columns and 12967 nonzeros
+Model fingerprint: 0x2d7655a1
+Variable types: 3067 continuous, 3488 integer (3488 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 3361 rows and 6555 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds (0.01 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2662.72 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.662723536735e+03, best bound 2.662723536735e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:14 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 2912 rows, 5671 columns and 11383 nonzeros
+Model fingerprint: 0xab870e40
+Variable types: 2640 continuous, 3031 integer (3031 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 2912 rows and 5671 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.01 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2515.01 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.515013836794e+03, best bound 2.515013836794e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:14 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 2495 rows, 4851 columns and 9897 nonzeros
+Model fingerprint: 0x77ac9cda
+Variable types: 2245 continuous, 2606 integer (2606 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 2495 rows and 4851 columns
+Presolve time: 0.02s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.01 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2367.35 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.367347526046e+03, best bound 2.367347526046e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:15 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 864 rows, 1855 columns and 4974 nonzeros
+Model fingerprint: 0x97fda804
+Variable types: 650 continuous, 1205 integer (1205 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 864 rows and 1855 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2881.59 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.881590664842e+03, best bound 2.881590664842e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:15 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 785 rows, 1675 columns and 4484 nonzeros
+Model fingerprint: 0xb218e4f3
+Variable types: 591 continuous, 1084 integer (1084 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 785 rows and 1675 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2892.36 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.892358355928e+03, best bound 2.892358355928e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:15 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 1071 rows, 2135 columns and 4994 nonzeros
+Model fingerprint: 0x6498f2d9
+Variable types: 892 continuous, 1243 integer (1243 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 1071 rows and 2135 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2903.13 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.903126047015e+03, best bound 2.903126047015e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:15 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 1277 rows, 2435 columns and 5272 nonzeros
+Model fingerprint: 0xa8f9d34d
+Variable types: 1113 continuous, 1322 integer (1322 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 1277 rows and 2435 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 2913.89 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 2.913893738102e+03, best bound 2.913893738102e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:15 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 1403 rows, 2583 columns and 5328 nonzeros
+Model fingerprint: 0x234bc814
+Variable types: 1254 continuous, 1329 integer (1329 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 1403 rows and 2583 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 1949.39 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 1.949393761070e+03, best bound 1.949393761070e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:15 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 1449 rows, 2571 columns and 5150 nonzeros
+Model fingerprint: 0xe037f3ce
+Variable types: 1315 continuous, 1256 integer (1256 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 1449 rows and 2571 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 1959.89 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 1.959893784037e+03, best bound 1.959893784037e+03, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:15 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 1456 rows, 2463 columns and 4835 nonzeros
+Model fingerprint: 0xc20bf744
+Variable types: 1336 continuous, 1127 integer (1127 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 1456 rows and 2463 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 998.158 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 9.981582804565e+02, best bound 9.981582804565e+02, gap 0.0000%
+
+Gurobi 12.0.1 (win64) logging started Tue Oct  7 10:32:16 2025
+
+Set parameter LogFile to value "gurobi_log.txt"
+Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows Server 2022.0 (20348.2))
+
+CPU model: 13th Gen Intel(R) Core(TM) i9-13900K, instruction set [SSE2|AVX|AVX2]
+Thread count: 24 physical cores, 32 logical processors, using up to 32 threads
+
+Non-default parameters:
+MIPGap  0.001
+
+Academic license 2694990 - for non-commercial use only - registered to zc___@ucl.ac.uk
+Optimize a model with 1070 rows, 1731 columns and 3508 nonzeros
+Model fingerprint: 0x8609a736
+Variable types: 973 continuous, 758 integer (758 binary)
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+02]
+  Objective range  [1e-02, 2e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+02]
+Presolve removed 1070 rows and 1731 columns
+Presolve time: 0.00s
+Presolve: All rows and columns removed
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds (0.00 work units)
+Thread count was 1 (of 32 available processors)
+
+Solution count 1: 19.0944 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 1.909437155573e+01, best bound 1.909437155573e+01, gap 0.0000%
