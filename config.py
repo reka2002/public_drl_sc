@@ -24,115 +24,169 @@ h_logger=Loggermixin.get_default_logger()
 
 # Define configuration here
 config = {
-  'AGENT_CLASS': 'RL',
-  # 'AGENT_CLASS': 'MIP',
-   'SOLVER': 'GUROBI',
-    'ENVIRONMENT': 'TARTAN',
-    'START_TIME': '2018-01-01',
-   # 'END_FILE': '2018-01-02',
-  #  'END_TIME': '2018-01-11', # for simplifed example
-    'END_TIME': '2018-03-31',
-  #  'REWARD_FUNCTION': 'OTD1',
-    'GAP': 0.001,
-    'TIME_LIMIT': 120,
+#   'AGENT_CLASS': 'RL',
+#   # 'AGENT_CLASS': 'MIP',
+#    'SOLVER': 'GUROBI',
+#     'ENVIRONMENT': 'TARTAN',
+#     'START_TIME': '2018-01-01',
+#    # 'END_FILE': '2018-01-02',
+#   #  'END_TIME': '2018-01-11', # for simplifed example
+#     'END_TIME': '2018-03-31',
+#   #  'REWARD_FUNCTION': 'OTD1',
+#     'GAP': 0.001,
+#     'TIME_LIMIT': 120,
 
-    #use for heuristic
-     'CONFIDENCE_LEVEL': 0,
-#    # 'HEURISTIC_ALGO' : 'RANDOM', 
-  #  'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND',
-       'FORECAST': 'UNIFORM',
-   #  'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
+#     #use for heuristic
+#      'CONFIDENCE_LEVEL': 0,
+# #    # 'HEURISTIC_ALGO' : 'RANDOM', 
+#   #  'FORECAST': 'DETERMINISTIC_AVERAGE_DEMAND',
+#        'FORECAST': 'UNIFORM',
+#    #  'FORECAST': 'STOCHASTIC_AVERAGE_DEMAND',
 
-# Use for the simplified example
-    # 'MIP_ALGO': 'SIMP_MPC',
-    # 'DEMAND_MODEL': 'EXCEL_DEMAND',
-    # 'EXCEL_DEMAND_FILE': 'demand_data',
-    #  'N_PRODUCTS': 2,
-    #  'ORDER_SIZE': 1,
-    #  'WORKING_CAPITAL_PERCENTAGE': 10,
-    # 'FORECAST': 'FALSE',
-    # 'FORECAST_ACCURACY': 0,
-    # 'FIXED_PLANNING_HORIZON': 5,
-    # 'LOOKAHEAD_PLANNING_HORIZON': 10,
-    # 'TRANSITION_MATRIX_SETTING': 'PARAMETER_FILE',
-    # 'ORDER_BOOK':'YES',
-    # 'PRODUCT_DATA_PATH': 'ada\environments\demand_models\demand_files\demand_data.xlsx',
+# # Use for the simplified example
+#     # 'MIP_ALGO': 'SIMP_MPC',
+#     # 'DEMAND_MODEL': 'EXCEL_DEMAND',
+#     # 'EXCEL_DEMAND_FILE': 'demand_data',
+#     #  'N_PRODUCTS': 2,
+#     #  'ORDER_SIZE': 1,
+#     #  'WORKING_CAPITAL_PERCENTAGE': 10,
+#     # 'FORECAST': 'FALSE',
+#     # 'FORECAST_ACCURACY': 0,
+#     # 'FIXED_PLANNING_HORIZON': 5,
+#     # 'LOOKAHEAD_PLANNING_HORIZON': 10,
+#     # 'TRANSITION_MATRIX_SETTING': 'PARAMETER_FILE',
+#     # 'ORDER_BOOK':'YES',
+#     # 'PRODUCT_DATA_PATH': 'ada\environments\demand_models\demand_files\demand_data.xlsx',
 
-    # 'BASE_TIME_INTERVAL': 1,
+#     # 'BASE_TIME_INTERVAL': 1,
 
-# Add Hyperparameter values used to train the DRL agent
-    # 'GAMMA': 0.95,
-    # 'BETA': 0.0001,
-    # 'ACTOR_LR': 0.000005,
-    # 'CRITIC_LR': 0.0001,
-    # 'BATCH_SIZE': 128,
-# To keep network dimensions same as trained
-  #  'N_HIDDEN_NODES': 64,
-   # 'N_HIDDEN_LAYERS': 1,
+# # Add Hyperparameter values used to train the DRL agent
+#     # 'GAMMA': 0.95,
+#     # 'BETA': 0.0001,
+#     # 'ACTOR_LR': 0.000005,
+#     # 'CRITIC_LR': 0.0001,
+#     # 'BATCH_SIZE': 128,
+# # To keep network dimensions same as trained
+#   #  'N_HIDDEN_NODES': 64,
+#    # 'N_HIDDEN_LAYERS': 1,
 
- # Configuration values for simplified example 
-#    'N_HIDDEN_NODES': 550,
+#  # Configuration values for simplified example 
+# #    'N_HIDDEN_NODES': 550,
+# #    'N_HIDDEN_LAYERS': 12,
+# #    'N_PRODUCTS': 4,
+# #     'N_EPISODES': 50000,
+# #    'RANDOM_SEED': 1733183865,
+# #    'STATE_SETTING': 'INVENTORY',
+#   #  'BATCH_SIZE': 100,
+#   # 'GRADIENT_CLIPPING': True
+#     'N_HIDDEN_NODES':64,
 #    'N_HIDDEN_LAYERS': 12,
+# #    'N_HIDDEN_NODES': 32,
+# #    'N_HIDDEN_LAYERS': 7,
 #    'N_PRODUCTS': 4,
-#     'N_EPISODES': 50000,
+#    'N_EPISODES': 7000,
 #    'RANDOM_SEED': 1733183865,
 #    'STATE_SETTING': 'INVENTORY',
-  #  'BATCH_SIZE': 100,
-  # 'GRADIENT_CLIPPING': True
-    'N_HIDDEN_NODES':64,
-   'N_HIDDEN_LAYERS': 12,
-#    'N_HIDDEN_NODES': 32,
-#    'N_HIDDEN_LAYERS': 7,
-   'N_PRODUCTS': 4,
-   'N_EPISODES': 7000,
-   'RANDOM_SEED': 1733183865,
-  # 'STATE_SETTING': 'INVENTORY',
-   'BATCH_SIZE': 128,
+#    'BATCH_SIZE': 128,
 
-    # Policy function - intermediate timescale
+#     # Policy function - intermediate timescale
 
-    # Value function - fastest timescale
-#     'GAMMA':0.95,
-#     'ACTOR_LR': 5E-6,
-#    'CRITIC_LR': 1E-4,
-#    'BETA': 1E-4,
+#     # Value function - fastest timescale
+# #     'GAMMA':0.95,
+# #     'ACTOR_LR': 5E-6,
+# #    'CRITIC_LR': 1E-4,
+# #    'BETA': 1E-4,
+# #    'LOAD_LEVEL':1, 
+
+
+#  'GAMMA': 0.99,
+#    'ACTOR_LR': 0.01,
+#    'CRITIC_LR': 1E-5,
+#  #  'BETA': 1E-4,
+# #     'GAMMA': 0.95851,
+# #     'ACTOR_LR': 0.1,
+# #    'CRITIC_LR': 0.00218,
+#     'BETA': 0.0001,
 #    'LOAD_LEVEL':1, 
-
-
- 'GAMMA': 0.99,
-   'ACTOR_LR': 0.01,
-   'CRITIC_LR': 1E-5,
- #  'BETA': 1E-4,
-#     'GAMMA': 0.95851,
-#     'ACTOR_LR': 0.1,
-#    'CRITIC_LR': 0.00218,
-    'BETA': 1E-4,
-
-   'LOAD_LEVEL':1, 
    
 
 
-    # 'ACTOR_LR': 0.01,
-    # # value function - fastest timescale
-    # 'CRITIC_LR': 0.1 ,
-     'REWARD_FUNCTION': 'VALUE_ADD',
-     'STATE_SETTING':'INV_BALANCE_PRODUCTION',
+#     # 'ACTOR_LR': 0.01,
+#     # # value function - fastest timescale
+#     # 'CRITIC_LR': 0.1 ,
+#      'REWARD_FUNCTION': 'VALUE_ADD',
+#    #  'STATE_SETTING':'INV_BALANCE_PRODUCTION',
 
 
     
 
-   #  'STATE_SETTING': 'IO-PRODUCT'
-  #  'STATE_SETTING': 'IO_PRODUCT'
-  #  'STATE_SETTING': 'INVENTORY'
-# #     self.state_settings = ['INVENTORY', # State is just the inventory level
-#         'IO_RATIO', # Ratio of inventory to orders
-#         'IO_PRODUCT', # Ratio of inventory to orders + current product
-#         'INV_BALANCE_PRODUCTION', # Inventory - open orders and current product
-#         'CONCAT_FORECAST' # INV_BALANCE_PRODUCTION and flattened vector of monthly net forecast
-#         ] 
+#    #  'STATE_SETTING': 'IO-PRODUCT'
+#   #  'STATE_SETTING': 'IO_PRODUCT'
+#   #  'STATE_SETTING': 'INVENTORY'
+# # #     self.state_settings = ['INVENTORY', # State is just the inventory level
+# #         'IO_RATIO', # Ratio of inventory to orders
+# #         'IO_PRODUCT', # Ratio of inventory to orders + current product
+# #         'INV_BALANCE_PRODUCTION', # Inventory - open orders and current product
+# #         'CONCAT_FORECAST' # INV_BALANCE_PRODUCTION and flattened vector of monthly net forecast
+# #         ] 
 
-    # And so on...
+#     # And so on...
 }
+config = {
+    'AGENT_CLASS': 'RL',
+    'RL_ALGO': 'A2C',
+    'ENVIRONMENT': 'TARTAN',
+    'SYS_START_TIME': '2025-04-22',
+    'DATA_PATH': r'C:\Users\reka\Documents\GitHub\public_drl_sc/RESULTS/A2C/2025_04_22_07_06',
+    'START_TIME': '2018-01-01',
+    'END_TIME': '2018-03-31',
+    'GAP': 0.001,
+    'TIME_LIMIT': 120,
+    'CONFIDENCE_LEVEL': 0,
+    'FORECAST': 'UNIFORM',
+    'N_HIDDEN_NODES': 64,
+    'N_HIDDEN_LAYERS': 12,
+    'N_PRODUCTS': 8,
+    'N_EPISODES': 10000,
+    'RANDOM_SEED': 1733183865,
+    'STATE_SETTING': 'INVENTORY',
+    'BATCH_SIZE': 128,
+    'GAMMA': 0.99,
+    'ACTOR_LR': 0.01,
+    'CRITIC_LR': 1e-05,
+    'BETA': 0.0001,
+    'LOAD_LEVEL': 1,
+    'REWARD_FUNCTION': 'VALUE_ADD',
+    'TRANSITION_MATRIX_SETTING': 'RANDOM',
+    'BASE_TIME_INTERVAL': 1,
+    'BASE_TIME_UNIT': 'DAY',
+    'FIXED_PLANNING_HORIZON': 7,
+    'LOOKAHEAD_PLANNING_HORIZON': 14,
+    'MAINTENANCE_MODEL': 'UNIFORM_STOP',
+    'DEMAND_MODEL': 'SEASONAL_DEMAND',
+    'PRODUCT_DATA_PATH': None,
+    'SHUTDOWN_PROB': 0.0,
+    'WEEKEND_SHIPMENTS': True,
+    'ORDER_BOOK': None,
+    'WORKING_CAPITAL_PERCENTAGE': 0.00027397260273972606,
+    'LATE_PENALTY': 25,
+    'TRAIN': True,
+    'IMPOSE_MIN_CAMPAIGN': True,
+    'ORDER_SIZE': 25,
+    'MEAN_LEAD_TIME': 7,
+    'STD_LEAD_TIME': 2,
+    'VAR_STD_MARGIN_MEAN': 40,
+    'VAR_STD_MARGIN_STD': 2,
+    'FORECAST_ACCURACY': 3,
+    'ACTIVATION_FUNCTION': 'ELU',
+    'LEARNING_RATE': 0.01,
+    'BIAS': True,
+    'GRADIENT_CLIPPING': False,
+    'DEVICE': 'CPU',
+    'FRAMEWORK': 'PYTORCH',
+    'PERIODIC_TESTING': True,
+}
+
 
 
 
